@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1724.438" height="1290.515" viewBox="0 0 1724.438 1290.515">
+  <defs>
+    <clipPath id="clip-path-1">
+      <path d="M1724.438 545.067 L281.614 1290.515 L0 745.448 L1442.824 0 Z"/>
+    </clipPath>
+  </defs>
+  <title>caliper</title>
+  <g id="caliper">
+    <g id="caliper-vernier.svg" clip-path="url(#clip-path-1)">
+      <polygon points="1480.762,427.235 326.503,1023.593 290.059,953.055 1444.318,356.697" fill="none" stroke="#ababab" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1464.731" y1="435.518" x2="1482.953" y2="470.787" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1448.699" y1="443.801" x2="1455.326" y2="456.626" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1432.668" y1="452.083" x2="1439.294" y2="464.908" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1416.637" y1="460.366" x2="1423.263" y2="473.191" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1400.605" y1="468.649" x2="1407.232" y2="481.474" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1384.574" y1="476.932" x2="1396.17" y2="499.376" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1368.543" y1="485.214" x2="1375.169" y2="498.039" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1352.511" y1="493.497" x2="1359.137" y2="506.322" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1336.48" y1="501.78" x2="1343.106" y2="514.605" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1320.448" y1="510.063" x2="1327.075" y2="522.888" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1304.417" y1="518.345" x2="1322.639" y2="553.614" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1288.386" y1="526.628" x2="1295.012" y2="539.453" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1272.354" y1="534.911" x2="1278.981" y2="547.736" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1256.323" y1="543.194" x2="1262.949" y2="556.019" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1240.292" y1="551.476" x2="1246.918" y2="564.302" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1224.26" y1="559.759" x2="1235.856" y2="582.203" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1208.229" y1="568.042" x2="1214.855" y2="580.867" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1192.197" y1="576.325" x2="1198.824" y2="589.15" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1176.166" y1="584.607" x2="1182.792" y2="597.433" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1160.135" y1="592.89" x2="1166.761" y2="605.715" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1144.103" y1="601.173" x2="1162.325" y2="636.442" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1128.072" y1="609.456" x2="1134.698" y2="622.281" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1112.041" y1="617.738" x2="1118.667" y2="630.564" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1096.009" y1="626.021" x2="1102.635" y2="638.846" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1079.978" y1="634.304" x2="1086.604" y2="647.129" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1063.946" y1="642.587" x2="1075.542" y2="665.031" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1047.915" y1="650.869" x2="1054.541" y2="663.695" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1031.884" y1="659.152" x2="1038.51" y2="671.977" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1015.852" y1="667.435" x2="1022.478" y2="680.26" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="999.821" y1="675.718" x2="1006.447" y2="688.543" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="983.79" y1="684" x2="1002.012" y2="719.269" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="967.758" y1="692.283" x2="974.384" y2="705.108" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="951.727" y1="700.566" x2="958.353" y2="713.391" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="935.695" y1="708.849" x2="942.322" y2="721.674" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="919.664" y1="717.131" x2="926.29" y2="729.957" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="903.633" y1="725.414" x2="915.228" y2="747.858" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="887.601" y1="733.697" x2="894.227" y2="746.522" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="871.57" y1="741.98" x2="878.196" y2="754.805" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="855.538" y1="750.262" x2="862.165" y2="763.088" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="839.507" y1="758.545" x2="846.133" y2="771.37" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="823.476" y1="766.828" x2="841.698" y2="802.097" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="807.444" y1="775.111" x2="814.071" y2="787.936" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="791.413" y1="783.393" x2="798.039" y2="796.219" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="775.382" y1="791.676" x2="782.008" y2="804.501" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="759.35" y1="799.959" x2="765.976" y2="812.784" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="743.319" y1="808.242" x2="754.915" y2="830.686" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="727.287" y1="816.524" x2="733.914" y2="829.35" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="711.256" y1="824.807" x2="717.882" y2="837.632" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="695.225" y1="833.09" x2="701.851" y2="845.915" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="679.193" y1="841.373" x2="685.82" y2="854.198" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="663.162" y1="849.655" x2="681.384" y2="884.925" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="647.131" y1="857.938" x2="653.757" y2="870.763" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="631.099" y1="866.221" x2="637.725" y2="879.046" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="615.068" y1="874.504" x2="621.694" y2="887.329" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="599.036" y1="882.787" x2="605.663" y2="895.612" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="583.005" y1="891.069" x2="594.601" y2="913.513" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="566.974" y1="899.352" x2="573.6" y2="912.177" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="550.942" y1="907.635" x2="557.568" y2="920.46" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="534.911" y1="915.918" x2="541.537" y2="928.743" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="518.88" y1="924.2" x2="525.506" y2="937.025" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="502.848" y1="932.483" x2="521.07" y2="967.752" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="486.817" y1="940.766" x2="493.443" y2="953.591" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="470.785" y1="949.049" x2="477.412" y2="961.874" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="454.754" y1="957.331" x2="461.38" y2="970.156" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="438.723" y1="965.614" x2="445.349" y2="978.439" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="422.691" y1="973.897" x2="434.287" y2="996.341" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="406.66" y1="982.18" x2="413.286" y2="995.005" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="390.628" y1="990.462" x2="397.255" y2="1003.287" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="374.597" y1="998.745" x2="381.223" y2="1011.57" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="358.566" y1="1007.028" x2="365.192" y2="1019.853" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="342.534" y1="1015.311" x2="360.756" y2="1050.58" fill="#000000" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="1480.762,427.235 1520.519,504.186 1472.425,529.034 1452.547,490.559 1478.197,477.306 1458.318,438.831" fill="none" stroke="#ababab" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="1444.318,356.697 1374.743,222.033 1322.908,208.193 1278.021,231.384 1364.161,398.111" fill="none" stroke="#ababab" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1364.161" y1="398.111" x2="1278.021" y2="231.384" fill="#000000" stroke="#ababab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M1067.795 445.615 C1032.115 376.555 1059.174 291.646 1128.234 255.965 C1197.295 220.284 1282.204 247.344 1317.885 316.404 C1353.565 385.464 1326.506 470.374 1257.445 506.054 C1188.385 541.735 1103.476 514.675 1067.795 445.615 Z" fill="none" stroke="#ababab" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M1096.652 430.706 C1069.205 377.583 1090.02 312.268 1143.143 284.821 C1196.267 257.375 1261.582 278.19 1289.028 331.313 C1316.475 384.436 1295.66 449.751 1242.536 477.198 C1189.413 504.645 1124.098 483.829 1096.652 430.706 Z" fill="none" stroke="#ababab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="308.281" y1="988.324" x2="212.093" y2="1038.021" fill="#000000" stroke="#ababab" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <polygon points="222.032,1057.258 202.794,1067.198 182.916,1028.722 202.153,1018.783" fill="none" stroke="#ababab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M1077.412 684.375 L878.623 787.081 C875.082 788.911 870.727 787.523 868.898 783.982 L796.009 642.906 C794.18 639.364 795.567 635.01 799.109 633.18 L997.898 530.474 C1001.44 528.644 1005.794 530.032 1007.624 533.573 L1080.512 674.649 C1082.342 678.191 1080.954 682.545 1077.412 684.375 Z" fill="none" stroke="#ababab" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="1083.825,681.062 1103.704,719.537 1055.609,744.386 1035.731,705.91" fill="none" stroke="#ababab" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="1004.311,527.161 957.927,437.385 976.631,387.1 1021.519,363.909 1084.467,485.747" fill="none" stroke="#ababab" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1084.467" y1="485.747" x2="1021.519" y2="363.909" fill="#000000" stroke="#ababab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M1051.335 665.351 L878.196 754.805 C876.425 755.72 874.248 755.026 873.333 753.255 L858.424 724.399 C857.509 722.628 858.203 720.451 859.974 719.536 L1033.113 630.082 C1034.884 629.167 1037.061 629.861 1037.976 631.632 L1052.885 660.488 C1053.8 662.259 1053.106 664.436 1051.335 665.351 Z" fill="none" stroke="#ababab" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1029.907" y1="631.739" x2="1041.502" y2="654.183" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1023.494" y1="635.052" x2="1030.12" y2="647.877" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1017.082" y1="638.365" x2="1023.708" y2="651.19" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1010.669" y1="641.678" x2="1017.295" y2="654.503" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="1004.256" y1="644.991" x2="1010.883" y2="657.816" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="997.844" y1="648.304" x2="1009.44" y2="670.748" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="991.431" y1="651.617" x2="998.058" y2="664.442" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="985.019" y1="654.93" x2="991.645" y2="667.755" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="978.606" y1="658.243" x2="985.232" y2="671.069" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="972.194" y1="661.557" x2="978.82" y2="674.382" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="965.781" y1="664.87" x2="977.377" y2="687.314" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="959.369" y1="668.183" x2="965.995" y2="681.008" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="952.956" y1="671.496" x2="959.582" y2="684.321" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="946.543" y1="674.809" x2="953.17" y2="687.634" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="940.131" y1="678.122" x2="946.757" y2="690.947" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="933.718" y1="681.435" x2="945.314" y2="703.879" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="927.306" y1="684.748" x2="933.932" y2="697.573" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="920.893" y1="688.061" x2="927.519" y2="700.886" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="914.481" y1="691.374" x2="921.107" y2="704.2" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="908.068" y1="694.688" x2="914.694" y2="707.513" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="901.656" y1="698.001" x2="913.251" y2="720.445" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="895.243" y1="701.314" x2="901.869" y2="714.139" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="888.83" y1="704.627" x2="895.457" y2="717.452" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="882.418" y1="707.94" x2="889.044" y2="720.765" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="876.005" y1="711.253" x2="882.632" y2="724.078" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="869.593" y1="714.566" x2="881.189" y2="737.01" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="863.18" y1="717.879" x2="869.806" y2="730.704" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M877.127 795.979 C873.01 788.01 876.132 778.213 884.101 774.096 C892.069 769.979 901.867 773.101 905.984 781.07 C910.101 789.038 906.978 798.835 899.01 802.952 C891.041 807.069 881.244 803.947 877.127 795.979 Z" fill="none" stroke="#ababab" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="899.01" y1="802.952" x2="884.101" y2="774.096" fill="#000000" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M734.716 768.003 C723.737 746.754 732.063 720.628 753.312 709.649 C774.562 698.67 800.688 706.997 811.666 728.246 C822.645 749.495 814.319 775.621 793.07 786.6 C771.82 797.578 745.694 789.252 734.716 768.003 Z" fill="none" stroke="#ababab" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M760.366 754.751 C756.706 747.668 759.482 738.959 766.565 735.299 C773.648 731.64 782.356 734.415 786.016 741.498 C789.676 748.581 786.9 757.29 779.817 760.95 C772.734 764.609 764.025 761.834 760.366 754.751 Z" fill="none" stroke="#ababab" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="760.366" y1="754.751" x2="737.922" y2="766.346" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="759.088" y1="751.205" x2="734.407" y2="756.597" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="758.771" y1="747.45" x2="733.536" y2="746.271" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="759.437" y1="743.741" x2="735.367" y2="736.07" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="761.04" y1="740.331" x2="739.776" y2="726.692" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="763.471" y1="737.451" x2="746.461" y2="718.773" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="766.565" y1="735.299" x2="754.969" y2="712.855" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="770.11" y1="734.021" x2="764.718" y2="709.341" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="773.865" y1="733.704" x2="775.045" y2="708.47" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="777.574" y1="734.37" x2="785.245" y2="710.301" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="780.985" y1="735.973" x2="794.624" y2="714.709" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="783.864" y1="738.405" x2="802.542" y2="721.395" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="786.016" y1="741.498" x2="808.46" y2="729.902" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="787.294" y1="745.043" x2="811.974" y2="739.652" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="787.611" y1="748.799" x2="812.846" y2="749.978" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="786.945" y1="752.508" x2="811.015" y2="760.178" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="785.342" y1="755.918" x2="806.606" y2="769.557" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="782.911" y1="758.798" x2="799.92" y2="777.475" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="779.817" y1="760.95" x2="791.413" y2="783.393" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="776.272" y1="762.228" x2="781.664" y2="786.908" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="772.517" y1="762.544" x2="771.337" y2="787.779" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="768.808" y1="761.879" x2="761.137" y2="785.948" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="765.397" y1="760.275" x2="751.758" y2="781.54" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="762.518" y1="757.844" x2="743.84" y2="774.854" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M686.621 792.851 C681.132 782.227 685.295 769.164 695.92 763.674 C706.544 758.185 719.607 762.348 725.097 772.973 C730.586 783.597 726.423 796.66 715.798 802.15 C705.174 807.639 692.111 803.476 686.621 792.851 Z" fill="none" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="725.097" y1="772.973" x2="686.621" y2="792.851" fill="#000000" stroke="#ababab" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="1432.668,452.083 1442.607,471.321 1423.37,481.26" fill="none" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="1035.731,705.91 1045.67,725.148 1026.433,735.087" fill="none" stroke="#ababab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+</svg>
