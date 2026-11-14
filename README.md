@@ -6,8 +6,8 @@ Built with [Astro](https://astro.build) (static output, TypeScript strict, no cl
 
 The full implementation plan lives at
 `/Users/brotholomew/.opencode/plan/droocked-origins-website.md`.
-Stage 0 (this bootstrap) covers repository setup only; pages, vault rendering,
-products, analytics, and CI/CD are implemented in later stages.
+Release, CI/CD, GitHub Pages, and Cloudflare DNS are documented in
+[`docs/deployment.md`](docs/deployment.md).
 
 ## Requirements
 
@@ -24,8 +24,8 @@ products, analytics, and CI/CD are implemented in later stages.
 | `npm run preview` | Preview the built site locally. |
 | `npm run check` | Run `astro check` (TypeScript + Astro diagnostics). |
 | `npm run validate` | Run content validation (`scripts/validate-content.mjs`). |
-| `npm run brand:build` | Build brand/header assets (placeholder until Stage 1). |
-| `npm run utm` | Print UTM links (placeholder until Stage 7). |
+| `npm run brand:build` | Regenerate the header/brand SVGs from `brand/source/`. |
+| `npm run utm` | Print UTM links from parts (`docs/utm.md`). |
 
 ## Project layout
 
