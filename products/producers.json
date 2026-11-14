@@ -26,5 +26,12 @@
         "url": "https://getartcraft.com",
         "icon": "/icons/producers/artcraft.svg",
         "description": "Maker of the ArtCraft Suite: seventeen open-source creative apps built in Rust, covering image, vector, video, audio, motion, 3D, CAD and more."
+    },
+    {
+        "id": "apple",
+        "name": "Apple",
+        "url": "https://www.apple.com",
+        "icon": "/icons/producers/apple.svg",
+        "description": "Cupertino-based technology company behind the iPhone, Mac, iPad and a broad ecosystem of consumer hardware and software."
     }
 ]
