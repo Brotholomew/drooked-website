@@ -1,0 +1,43 @@
+---
+/**
+ * Consent banner for Google Analytics 4.
+ *
+ * Rendered hidden so a returning visitor never sees a flash of the banner
+ * before `consent.ts` reads the stored choice. It is a bottom plate, not a
+ * full-screen modal: it never blocks the page or the homepage no-scroll
+ * layout. Any `[data-consent-open]` control can reopen it.
+ */
+---
+
+<section
+  class="consent-banner"
+  data-consent-banner
+  role="region"
+  aria-labelledby="consent-banner-title"
+  aria-describedby="consent-banner-text"
+  hidden
+>
+  <div class="consent-banner__body">
+    <p class="consent-banner__label" id="consent-banner-title">
+      ANALYTICS CONSENT
+    </p>
+    <p class="consent-banner__text" id="consent-banner-text">
+      This site uses Google Analytics 4 only with your consent. No analytics
+      cookies are set before you accept. You can change your choice at any time
+      with the <span class="consent-banner__nowrap">cookie settings</span> link in
+      the footer or on the privacy page.
+    </p>
+  </div>
+
+  <div class="consent-banner__actions">
+    <button class="consent-banner__button consent-banner__button--accept" type="button" data-consent-accept>
+      accept
+    </button>
+    <button class="consent-banner__button" type="button" data-consent-decline>
+      decline
+    </button>
+    <a class="consent-banner__link consent-banner__link--privacy" href="/privacy/">
+      privacy
+    </a>
+  </div>
+</section>

@@ -56,30 +56,51 @@ import SubpageHeader from '../components/SubpageHeader.astro';
 
     <h2>4. Google Analytics 4 (only with consent)</h2>
     <p>
-      If you accept analytics cookies, this website uses <strong>Google Analytics
-      4</strong> with the measurement ID <code>G-SZ67XVNMM4</code>. GA4 is provided
+      This website is built with <strong>Google Analytics 4</strong> only when the
+      production build defines the measurement ID <code>G-SZ67XVNMM4</code> in the
+      <code>PUBLIC_GA_ID</code> build variable. Local development and preview
+      builds do not include analytics at all. The GA4 library is included using the
+      standard <code>gtag.js</code> snippet, without a Google Tag Manager container,
+      and it processes analytics data only after you give consent. GA4 is provided
       by Google Ireland Limited for users in the European Economic Area, the United
       Kingdom, and Switzerland, and by Google LLC for other users.
     </p>
-    <p>When analytics is enabled, GA4 may collect:</p>
+    <p>
+      Every page is a normal full page load, so page views are measured directly by
+      GA4. If you accept analytics, GA4 may collect:
+    </p>
     <ul>
       <li>the pages you view and the time you spend on them;</li>
       <li>approximate location derived from your IP address (GA4 does not store the full IP address);</li>
       <li>device, browser, operating system, screen size, and language;</li>
       <li>the referring source, including UTM parameters in links;</li>
-      <li>interactions with outbound, social, and affiliate links, if such events are configured.</li>
+      <li>
+        interaction events: <code>affiliate_click</code> when a product storefront
+        link is clicked, <code>social_click</code> when a social icon is clicked,
+        <code>contact_click</code> when an email link is clicked, and
+        <code>outbound_click</code> when another external link that opens in a new
+        tab is clicked. These events record the destination URL and, for product
+        links, the product and storefront identifiers — not your name, email
+        address, or the contents of any message.
+      </li>
     </ul>
     <p>
-      Analytics storage is denied by default through Google Consent Mode v2. Before
-      you consent, no analytics cookies are set and no user-level analytics profile
-      is created. Google may still receive cookieless consent-state signals that do
-      not identify you. We do not enable Google Signals, ads personalization, or
-      advertising products on this site.
+      All four <strong>Consent Mode v2</strong> signals —
+      <code>analytics_storage</code>, <code>ad_storage</code>,
+      <code>ad_user_data</code>, and <code>ad_personalization</code> — are denied
+      by default before any measurement is configured. No analytics cookies are set
+      and no user-level analytics profile is created until you accept. Google may
+      still receive cookieless consent-state signals that do not identify you. We do
+      not enable Google Signals, ads personalization, or advertising products on
+      this site.
     </p>
     <p>
+      If you accepted on an earlier visit, the stored choice is read before GA4 is
+      configured, so analytics storage is granted again without showing the banner.
       You can withdraw your consent at any time with the <strong>cookie settings</strong> control at the end of this page or in the
-      footer. Withdrawal does not affect the lawfulness of processing that happened
-      before it.
+      footer. Declining also removes existing GA cookies from this browser.
+      Withdrawal does not affect the lawfulness of processing that happened before
+      it.
     </p>
 
     <h2>5. Cookies and local storage</h2>
@@ -154,8 +175,10 @@ import SubpageHeader from '../components/SubpageHeader.astro';
       </li>
       <li>
         <strong>Google Analytics:</strong> the GA4 data retention period is
-        configured in the GA4 property. The default is 14 months, and this site uses
-        that setting. Aggregated reports may be kept longer without directly
+        configured inside the GA4 property (Admin → Data settings → Data
+        retention), not in this website's code. It is set to
+        <strong>14 months</strong>, the longest event-level retention period GA4
+        currently offers. Aggregated reports may be kept longer without directly
         identifying you.
       </li>
       <li>

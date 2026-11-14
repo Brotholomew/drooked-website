@@ -40,6 +40,7 @@
   /* Stacking */
   --ruler-z: 30;
   --chrome-z: 40;
+  --consent-z: 90;
   --skip-link-z: 100;
 }
 

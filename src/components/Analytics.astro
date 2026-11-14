@@ -1,0 +1,51 @@
+---
+/**
+ * Google Analytics 4 with Consent Mode v2.
+ *
+ * The measurement ID comes from `PUBLIC_GA_ID` at build time. Nothing is
+ * rendered without it, so local and preview builds never talk to the
+ * production GA4 property. Stage 9 sets the variable in the deploy workflow.
+ *
+ * No GTM container is used: this is the plain gtag.js snippet.
+ */
+const gaId = import.meta.env.PUBLIC_GA_ID;
+---
+
+{
+  gaId && (
+    <>
+      <script is:inline define:vars={{ gaId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+
+        // Consent Mode v2 defaults: everything denied until the visitor opts in.
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'denied',
+        });
+
+        // A stored choice from a previous visit applies before GA is configured.
+        try {
+          if (window.localStorage.getItem('droocked-consent') === 'granted') {
+            gtag('consent', 'update', { analytics_storage: 'granted' });
+          }
+        } catch (error) {
+          // Storage can be blocked; the banner will ask again.
+        }
+
+        gtag('js', new Date());
+        gtag('config', gaId);
+      </script>
+      <script
+        is:inline
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+      />
+    </>
+  )
+}

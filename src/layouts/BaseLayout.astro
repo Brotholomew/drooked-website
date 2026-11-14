@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
 import BlueprintChrome from '../components/BlueprintChrome.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
 import LeftRuler from '../components/LeftRuler.astro';
 import TopRuler from '../components/TopRuler.astro';
 
@@ -33,6 +35,7 @@ const pageTitle =
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <Analytics />
   </head>
   <body class={bodyClass}>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -40,8 +43,11 @@ const pageTitle =
     <TopRuler />
     <LeftRuler />
     <slot />
+    <ConsentBanner />
     <script>
       import '../scripts/ruler.ts';
+      import '../scripts/consent.ts';
+      import '../scripts/analytics-events.ts';
     </script>
   </body>
 </html>
