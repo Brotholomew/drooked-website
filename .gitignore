@@ -29,3 +29,6 @@ Thumbs.db
 # Misc
 .netlify/
 .vercel/
+
+# Local before/after evidence (not shipped)
+screenshots/changes/

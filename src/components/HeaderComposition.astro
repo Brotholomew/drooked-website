@@ -42,6 +42,13 @@ const layerStyle = (bounds: LayerBounds) =>
     draggable="false"
   />
   <img
+    class="header-composition__layer header-composition__layer--full"
+    src="/brand/header-lockup.svg"
+    alt="droocked origins"
+    aria-hidden="true"
+    draggable="false"
+  />
+  <img
     class="header-composition__layer"
     style={layerStyle(layers.detail_d)}
     src="/brand/detail_d.svg"
@@ -57,13 +64,6 @@ const layerStyle = (bounds: LayerBounds) =>
     aria-hidden="true"
     draggable="false"
   />
-  <img
-    class="header-composition__layer header-composition__layer--full"
-    src="/brand/header-lockup.svg"
-    alt="droocked origins"
-    aria-hidden="true"
-    draggable="false"
-  />
 </div>
 
 <style>
@@ -71,6 +71,9 @@ const layerStyle = (bounds: LayerBounds) =>
     position: relative;
     width: 100%;
     aspect-ratio: 3840 / 1320;
+    /* Nudge the whole lockup (wordmark + caliper + sketches) right as one
+       unit so the jaws keep their exact fit around the first o. */
+    transform: translateX(clamp(8px, 1.5vw, 28px));
   }
 
   .header-composition__layer {

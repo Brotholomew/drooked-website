@@ -43,5 +43,35 @@
                 "affiliated": true
             }
         ]
+    },
+    {
+        "id": "dji-mic-mini-2",
+        "name": "DJI Mic Mini 2",
+        "subtitle": "wireless microphone system",
+        "icon": "/icons/products/dji-mic-mini-2.svg",
+        "description": "Compact wireless microphone kit with 11 g transmitters, 48 kHz/24-bit audio, two-level noise cancellation, three voice presets and up to 48 hours of total runtime with the charging case.",
+        "producer-id": "dji",
+        "links": [
+            {
+                "storefront-id": "amazon-de",
+                "link": "",
+                "affiliated": true
+            }
+        ]
+    },
+    {
+        "id": "artcraft-suite",
+        "name": "ArtCraft Suite",
+        "subtitle": "open-source creative app suite",
+        "icon": "/icons/products/artcraft-suite.svg",
+        "description": "Seventeen native, open-source creative apps built in Rust: image editing, vector illustration, video, audio, motion graphics, 2D animation, page layout, 3D, CAD and more. Free to use, with macOS, Windows and Linux builds.",
+        "producer-id": "artcraft",
+        "links": [
+            {
+                "storefront-id": "artcraft-official",
+                "link": "https://getartcraft.com",
+                "affiliated": false
+            }
+        ]
     }
 ]
