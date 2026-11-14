@@ -45,14 +45,11 @@
   flex-direction: column;
 }
 
-/* Homepage: the composition is centred in the sheet, so the horizontal
-   inset is mirrored and the last grid cell is left to SheetEnd. The inset
-   scales from the sheet gutter (phones) to the full content inset. */
+/* Homepage: the header composition spans the viewport so the wordmark keeps
+   its 62.2% of 3840 scale. Horizontal padding is zero; the top and bottom
+   insets stay inside the sheet. */
 .layout-home .home-shell__main {
-  padding:
-    var(--content-y)
-    clamp(var(--sheet-gutter), 9vw, var(--content-x))
-    var(--grid-minor);
+  padding: var(--content-y) 0 var(--grid-minor);
 }
 
 /* -------------------------------------------------------------------------

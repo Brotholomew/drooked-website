@@ -88,9 +88,9 @@ const navLinks = [
   }
 
   /*
-   * The header keeps its 3840 x 1320 coordinate system. On normal screens it
-   * fills the sheet; on ultrawide or short screens the height cap shrinks it
-   * so the logo never forces the page to scroll.
+   * The header keeps its 3840 x 1320 coordinate system and spans the full
+   * viewport width, so the wordmark stays at 2390/3840 (62.2%) of that width.
+   * On ultrawide or short screens the height cap shrinks it instead.
    */
   .home__header {
     width: min(100%, calc((100dvh - 280px) * 3840 / 1320));
@@ -103,7 +103,12 @@ const navLinks = [
     align-items: center;
     justify-content: center;
     gap: clamp(1.25rem, 4.5vw, 3.25rem);
-    margin-top: clamp(0.8rem, 3.2vh, 2.25rem);
+    /*
+     * The 1320-unit header crop carries empty space below the wordmark.
+     * Pull the rows into that transparent lower band so the formula-sized
+     * composition and the rows still fit a 720px or 1080px viewport.
+     */
+    margin-top: -2.5rem;
     list-style: none;
   }
 
@@ -134,6 +139,10 @@ const navLinks = [
   }
 
   @media (max-width: 640px) {
+    .home__social {
+      margin-top: 0.75rem;
+    }
+
     .home__nav {
       flex-direction: column;
       align-items: center;
