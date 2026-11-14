@@ -198,6 +198,19 @@ for (const name of ['caliper', 'detail_d', 'o_measure']) {
   await copyFile(source, path.join(brandDir, `${name}.svg`));
 }
 
+// 3b. Compact wordmark for the subpage header: keep the standalone glyph
+// geometry, recolour it to the site logo ink.
+const wordmark = await readSource('droocked-wordmark.svg');
+const compactWordmark = replaceOnce(
+  wordmark,
+  'fill="#000000"',
+  'fill="#2b2c2c"',
+  'compact wordmark',
+);
+if (!compactWordmark.includes('fill="#2b2c2c"')) {
+  fail('compact wordmark: recolour was not applied');
+}
+
 // 4. Favicon: the first `d` of the wordmark, in white on blueprint blue.
 const secondGlyphIndex = wordmarkPath.indexOf('M451.660');
 if (secondGlyphIndex <= 0) {
@@ -220,6 +233,7 @@ const favicon = `<?xml version="1.0" encoding="UTF-8"?>
 // 5. Write everything.
 await writeFile(path.join(brandDir, 'header-lockup.svg'), headerLockup);
 await writeFile(path.join(brandDir, 'header-sketches.svg'), headerSketches);
+await writeFile(path.join(brandDir, 'wordmark.svg'), compactWordmark);
 await writeFile(path.join(root, 'public', 'favicon.svg'), favicon);
 
 const appleTouchIcon = path.join(root, 'public', 'apple-touch-icon.png');
@@ -242,6 +256,7 @@ for (const name of SOURCE_FILES) {
 console.log('brand:build complete');
 console.log(`  ${path.relative(root, path.join(brandDir, 'header-lockup.svg'))}`);
 console.log(`  ${path.relative(root, path.join(brandDir, 'header-sketches.svg'))}`);
+console.log(`  ${path.relative(root, path.join(brandDir, 'wordmark.svg'))}`);
 console.log(`  ${path.relative(root, path.join(brandDir, 'caliper.svg'))}`);
 console.log(`  ${path.relative(root, path.join(brandDir, 'detail_d.svg'))}`);
 console.log(`  ${path.relative(root, path.join(brandDir, 'o_measure.svg'))}`);

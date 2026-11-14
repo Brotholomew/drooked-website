@@ -1,0 +1,27 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SubpageHeader from '../components/SubpageHeader.astro';
+import CmykLink from '../components/CmykLink.astro';
+---
+
+<PageLayout
+  title="Sheet not found"
+  description="The requested sheet is not part of the droocked.origins drawing set."
+  noindex
+>
+  <SubpageHeader title="SHEET NOT FOUND" />
+
+  <section class="page-section">
+    <div class="blueprint-box not-found">
+      <h2 class="blueprint-box__label">SHEET NOT FOUND / 404</h2>
+      <p class="not-found__code" aria-hidden="true">404</p>
+      <p class="not-found__text">
+        THIS SHEET IS NOT PART OF THE DRAWING SET. IT MAY HAVE BEEN MOVED,
+        RENAMED, OR NEVER ISSUED.
+      </p>
+      <p class="not-found__link">
+        <CmykLink href="/" text="return to home" />
+      </p>
+    </div>
+  </section>
+</PageLayout>

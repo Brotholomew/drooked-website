@@ -221,40 +221,48 @@ body {
 .left-ruler__tick {
   position: absolute;
   right: 0;
-  width: 7px;
+  width: 5px;
   height: 1px;
   background-color: rgba(243, 243, 248, 0.35);
 }
 
 .left-ruler__tick--major {
-  width: 12px;
+  width: 9px;
   background-color: rgba(243, 243, 248, 0.7);
 }
 
 .left-ruler__label {
   position: absolute;
-  right: 15px;
+  right: 10px;
   transform: translateY(-50%);
   font-family: var(--font-mono);
   font-size: 0.5625rem;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: var(--ink-60);
   white-space: nowrap;
 }
 
 @media (max-width: 640px) {
   .left-ruler__tick {
-    width: 5px;
+    width: 4px;
   }
 
   .left-ruler__tick--major {
-    width: 9px;
+    width: 6px;
   }
 
   .left-ruler__label {
-    right: 11px;
+    right: 7px;
     font-size: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* Five-digit sheet coordinates still have to fit the 28px band. */
+  .left-ruler__label--long {
+    right: 6px;
+    font-size: 0.4375rem;
+    letter-spacing: 0;
   }
 }

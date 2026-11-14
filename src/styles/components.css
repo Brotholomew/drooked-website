@@ -224,3 +224,313 @@
     letter-spacing: 0.03em;
   }
 }
+
+/* -------------------------------------------------------------------------
+   Subpage shell: compact back / wordmark / title row
+   ---------------------------------------------------------------------- */
+
+.subpage-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(243, 243, 248, 0.35);
+}
+
+.subpage-header__nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.subpage-header__back {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(243, 243, 248, 0.4);
+  color: var(--ink-80);
+  text-decoration: none;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.subpage-header__back:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.subpage-header__arrow {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+.subpage-header__wordmark {
+  width: auto;
+  height: 1.125rem;
+}
+
+.subpage-header__title {
+  margin: 0;
+  font-size: clamp(1.125rem, 1rem + 0.7vw, 1.625rem);
+  letter-spacing: 0.1em;
+  text-align: right;
+}
+
+/* -------------------------------------------------------------------------
+   Static subpage content
+   ---------------------------------------------------------------------- */
+
+.page-section {
+  margin-top: clamp(1.75rem, 5vw, 3rem);
+}
+
+.page-section + .page-section {
+  margin-top: clamp(2rem, 6vw, 3.25rem);
+}
+
+.page-copy {
+  max-width: 68ch;
+}
+
+.page-copy + .page-copy {
+  margin-top: 1.25rem;
+}
+
+/* Blueprint plate used for placeholders and the 404 sheet. */
+.blueprint-box {
+  position: relative;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  border: 1px solid rgba(243, 243, 248, 0.5);
+  background-color: rgba(5, 41, 71, 0.28);
+}
+
+.blueprint-box::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(243, 243, 248, 0.16);
+  pointer-events: none;
+}
+
+.blueprint-box__label {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.blueprint-box__text {
+  margin: 0;
+  max-width: 54ch;
+  font-size: 0.9375rem;
+  color: var(--ink-80);
+}
+
+/* Contact */
+.contact-copy {
+  max-width: 62ch;
+}
+
+.contact-mail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  align-items: baseline;
+  margin-top: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  letter-spacing: 0.04em;
+}
+
+.contact-mail__label {
+  color: var(--ink-60);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* -------------------------------------------------------------------------
+   Privacy policy
+   ---------------------------------------------------------------------- */
+
+.privacy {
+  max-width: 74ch;
+}
+
+.privacy__updated {
+  margin-top: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+.privacy h2 {
+  margin: 2.25rem 0 0.75rem;
+  font-size: clamp(1rem, 0.95rem + 0.35vw, 1.125rem);
+}
+
+.privacy h2:first-of-type {
+  margin-top: 0;
+}
+
+.privacy p,
+.privacy ul,
+.privacy ol {
+  max-width: 72ch;
+}
+
+.privacy ul,
+.privacy ol {
+  margin: 0 0 1em;
+  padding-left: 1.25em;
+}
+
+.privacy li {
+  margin-bottom: 0.35em;
+}
+
+.privacy strong {
+  color: var(--ink);
+}
+
+.privacy__note {
+  padding-left: 0.9rem;
+  border-left: 2px solid rgba(243, 243, 248, 0.35);
+  font-size: 0.9375rem;
+  color: var(--ink-60);
+}
+
+.legal-table-wrap {
+  margin: 0.5rem 0 1.5rem;
+  overflow-x: auto;
+}
+
+.legal-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.legal-table th,
+.legal-table td {
+  padding: 0.55rem 0.9rem 0.55rem 0;
+  border-bottom: 1px solid rgba(243, 243, 248, 0.2);
+  text-align: left;
+  vertical-align: top;
+}
+
+.legal-table th {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.legal-table td {
+  color: var(--ink-80);
+}
+
+.legal-table code {
+  color: var(--ink);
+  font-size: 0.8125rem;
+}
+
+.privacy-actions {
+  margin-top: 2rem;
+}
+
+.privacy-consent-button {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(243, 243, 248, 0.55);
+  color: var(--ink-80);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.privacy-consent-button:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* -------------------------------------------------------------------------
+   404
+   ---------------------------------------------------------------------- */
+
+.not-found {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.not-found__code {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(3.5rem, 2rem + 12vw, 9rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+
+.not-found__text {
+  margin: 0;
+  max-width: 46ch;
+}
+
+.not-found__link {
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .subpage-header {
+    gap: 0.7rem 0.9rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .subpage-header__nav {
+    gap: 0.65rem;
+  }
+
+  .subpage-header__back {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .subpage-header__wordmark {
+    height: 0.95rem;
+  }
+
+  .subpage-header__title {
+    flex-basis: 100%;
+    font-size: 1.125rem;
+    letter-spacing: 0.08em;
+    text-align: left;
+  }
+}

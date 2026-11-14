@@ -29,6 +29,7 @@ node scripts/render-brand-preview.mjs
 - `public/brand/header-lockup.svg` — cropped to the header; wordmark `#2b2c2c`,
   subtitle `fill:none`, `stroke:#ababab`, `stroke-width:2.4`
 - `public/brand/header-sketches.svg` — cropped to the header
+- `public/brand/wordmark.svg` — tight wordmark recoloured `#2b2c2c` for the subpage header
 - `public/brand/caliper.svg`, `detail_d.svg`, `o_measure.svg` — copied layer SVGs
 - `public/favicon.svg` — first `d` of the wordmark, white on `#1e4469`
 - `public/apple-touch-icon.png` — 180 x 180 raster of the favicon

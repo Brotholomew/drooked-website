@@ -8,12 +8,14 @@ interface Props {
   title?: string;
   description?: string;
   bodyClass?: string;
+  noindex?: boolean;
 }
 
 const {
   title = 'droocked.origins',
   description = 'droocked.origins — 3D printing products, projects, and knowledge.',
   bodyClass = '',
+  noindex = false,
 } = Astro.props;
 
 const pageTitle =
@@ -29,6 +31,7 @@ const pageTitle =
     <meta name="theme-color" content="#1e4469" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body class={bodyClass}>

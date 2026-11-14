@@ -36,8 +36,12 @@ const createTick = (units: number, major: boolean): HTMLElement => {
 const createLabel = (units: number): HTMLElement => {
   const label = document.createElement('span');
   label.className = 'left-ruler__label';
+  const text = String(units);
+  if (text.length > 4) {
+    label.classList.add('left-ruler__label--long');
+  }
   label.style.top = `${units * unit}px`;
-  label.textContent = String(units);
+  label.textContent = text;
   return label;
 };
 
