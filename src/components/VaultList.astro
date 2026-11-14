@@ -1,0 +1,35 @@
+---
+import CmykLink from './CmykLink.astro';
+import type { VaultEntry } from '../lib/vault';
+
+interface Props {
+  entries: VaultEntry[];
+}
+
+const { entries } = Astro.props;
+
+const kindLabel = (entry: VaultEntry): string =>
+  entry.type === 'folder' ? 'folder' : 'note';
+---
+
+<ul class="vault-list" role="list">
+  {
+    entries.map((entry) => (
+      <li class:list={['vault-list__item', `vault-list__item--${entry.type}`]}>
+        <span class="vault-list__index" aria-hidden="true">
+          {entry.orderLabel ?? ''}
+        </span>
+        <span class="vault-list__body">
+          <CmykLink
+            href={entry.route}
+            text={entry.displayTitle}
+            class="vault-list__link"
+          />
+        </span>
+        <span class="vault-list__kind" aria-hidden="true">
+          {kindLabel(entry)}
+        </span>
+      </li>
+    ))
+  }
+</ul>

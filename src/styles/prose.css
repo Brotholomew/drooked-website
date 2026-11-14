@@ -1,0 +1,606 @@
+/* -------------------------------------------------------------------------
+   Knowledgebase vault
+   One visual system for folder indexes and note pages. Prose is capped at
+   ~78ch; tables, display maths, and code scroll inside their own boxes so
+   the page itself never scrolls sideways.
+   ---------------------------------------------------------------------- */
+
+.vault-breadcrumb {
+  margin-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+.vault-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.15rem;
+  align-items: baseline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vault-breadcrumb__item {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.vault-breadcrumb__sep {
+  color: var(--ink-60);
+}
+
+.vault-breadcrumb__link {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+.vault-breadcrumb__current {
+  color: var(--ink);
+}
+
+.vault-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-60);
+}
+
+.vault-tags__tag {
+  padding: 0.15rem 0.4rem;
+  border: 1px solid rgba(243, 243, 248, 0.22);
+  color: var(--ink-60);
+}
+
+/* Folder / root indexes -------------------------------------------------- */
+
+.vault-index {
+  min-width: 0;
+  margin-top: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.vault-index__summary {
+  margin: 0 0 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+.vault-pinned {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(0, 196, 196, 0.55);
+  background-color: rgba(0, 196, 196, 0.06);
+}
+
+.vault-pinned::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(0, 196, 196, 0.16);
+  pointer-events: none;
+}
+
+.vault-pinned__label {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--cmyk-cyan);
+}
+
+.vault-pinned__title {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 0.92rem + 0.4vw, 1.1875rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.vault-pinned__meta {
+  margin: 0.45rem 0 0;
+  max-width: none;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-60);
+}
+
+.vault-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(243, 243, 248, 0.28);
+}
+
+.vault-list__item {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 0.55rem 0.25rem;
+  border-bottom: 1px solid rgba(243, 243, 248, 0.16);
+}
+
+.vault-list__item--folder {
+  background-color: rgba(243, 243, 248, 0.035);
+}
+
+.vault-list__index {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--cmyk-cyan);
+}
+
+.vault-list__body {
+  min-width: 0;
+}
+
+.vault-list__link {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.vault-list__kind {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+/* Note page -------------------------------------------------------------- */
+
+.vault-note {
+  min-width: 0;
+  margin-top: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.vault-toc {
+  max-width: 78ch;
+  margin: 0 0 2rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(243, 243, 248, 0.24);
+  font-family: var(--font-mono);
+}
+
+.vault-toc__summary {
+  cursor: pointer;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--ink-60);
+}
+
+.vault-toc__summary:hover {
+  color: var(--ink);
+}
+
+.vault-toc__list {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.75rem;
+}
+
+.vault-toc__item {
+  padding: 0.18rem 0;
+  overflow-wrap: anywhere;
+}
+
+.vault-toc__item--h3 {
+  padding-left: 1rem;
+  color: var(--ink-60);
+}
+
+/* Prose ------------------------------------------------------------------ */
+
+.prose {
+  min-width: 0;
+  max-width: 78ch;
+  overflow-wrap: break-word;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose p,
+.prose li,
+.prose blockquote {
+  max-width: 78ch;
+}
+
+.prose p {
+  margin-bottom: 1em;
+}
+
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  scroll-margin-top: calc(var(--frame-outer) + var(--ruler) + 1rem);
+}
+
+.prose h2 {
+  margin: 2.4rem 0 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(243, 243, 248, 0.28);
+  font-size: clamp(1.125rem, 1rem + 0.55vw, 1.4375rem);
+}
+
+.prose h3 {
+  margin: 1.85rem 0 0.65rem;
+  font-size: clamp(1rem, 0.95rem + 0.35vw, 1.1875rem);
+}
+
+.prose h4,
+.prose h5,
+.prose h6 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.prose .heading-anchor {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prose .heading-anchor:hover,
+.prose .heading-anchor:focus-visible {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--ink-60);
+  text-underline-offset: 0.24em;
+}
+
+.prose ul,
+.prose ol {
+  margin: 0 0 1em;
+  padding-left: 1.4em;
+}
+
+.prose li {
+  margin-bottom: 0.4em;
+}
+
+.prose li > p {
+  margin-bottom: 0.4em;
+}
+
+.prose strong,
+.prose b {
+  color: var(--ink);
+}
+
+.prose hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid rgba(243, 243, 248, 0.28);
+}
+
+.prose blockquote {
+  margin: 1.5rem 0;
+  padding: 0.15rem 0 0.15rem 1rem;
+  border-left: 2px solid rgba(243, 243, 248, 0.38);
+  color: var(--ink-60);
+}
+
+.prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.prose code {
+  padding: 0.1em 0.3em;
+  background-color: rgba(5, 41, 71, 0.45);
+  color: var(--ink);
+  font-size: 0.875em;
+}
+
+.prose pre {
+  max-width: 100%;
+  margin: 1.25rem 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid rgba(243, 243, 248, 0.25);
+  background-color: rgba(5, 41, 71, 0.45);
+}
+
+.prose pre code {
+  padding: 0;
+  background: none;
+}
+
+/* Links */
+
+.prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--ink-60);
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+}
+
+.prose a:hover {
+  text-decoration-color: var(--ink);
+}
+
+.prose a.cmyk-link {
+  text-decoration: none;
+}
+
+.vault-link--missing {
+  padding: 0 0.1em;
+  border-bottom: 1px dashed var(--cmyk-magenta);
+  color: var(--cmyk-magenta);
+  cursor: help;
+}
+
+/* Tables */
+
+.table-wrap {
+  max-width: 100%;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 1px solid rgba(243, 243, 248, 0.24);
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose table {
+  width: 100%;
+  min-width: 44rem;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.prose th,
+.prose td {
+  padding: 0.55rem 0.8rem;
+  border-right: 1px solid rgba(243, 243, 248, 0.14);
+  border-bottom: 1px solid rgba(243, 243, 248, 0.18);
+  overflow-wrap: normal;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th:last-child,
+.prose td:last-child {
+  border-right: 0;
+}
+
+.prose tr:last-child td {
+  border-bottom: 0;
+}
+
+.prose th {
+  background-color: rgba(243, 243, 248, 0.06);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.prose td {
+  color: var(--ink-80);
+}
+
+.prose td strong {
+  color: var(--ink);
+}
+
+/* Task lists */
+
+.prose .contains-task-list {
+  padding-left: 0.2em;
+  list-style: none;
+}
+
+.prose .task-list-item {
+  list-style: none;
+}
+
+.prose .task-list-item input[type="checkbox"] {
+  width: 0.85em;
+  height: 0.85em;
+  margin: 0 0.45em 0 0;
+  accent-color: var(--cmyk-cyan);
+  vertical-align: -0.06em;
+}
+
+/* Callouts */
+
+.callout {
+  position: relative;
+  max-width: 78ch;
+  margin: 1.75rem 0;
+  padding: 1rem 1.1rem 0.9rem;
+  border: 1px solid rgba(0, 196, 196, 0.34);
+  border-left: 3px solid var(--cmyk-cyan);
+  background-color: rgba(0, 196, 196, 0.055);
+}
+
+.callout__title {
+  margin: 0 0 0.55rem;
+  max-width: none;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cmyk-cyan);
+}
+
+.callout p:last-child,
+.callout ul:last-child,
+.callout ol:last-child {
+  margin-bottom: 0;
+}
+
+.callout--warning {
+  border-color: rgba(199, 199, 56, 0.38);
+  border-left-color: var(--cmyk-yellow);
+  background-color: rgba(199, 199, 56, 0.06);
+}
+
+.callout--warning .callout__title {
+  color: var(--cmyk-yellow);
+}
+
+.callout--danger,
+.callout--error,
+.callout--failure,
+.callout--bug {
+  border-color: rgba(197, 106, 189, 0.38);
+  border-left-color: var(--cmyk-magenta);
+  background-color: rgba(197, 106, 189, 0.065);
+}
+
+.callout--danger .callout__title,
+.callout--error .callout__title,
+.callout--failure .callout__title,
+.callout--bug .callout__title {
+  color: var(--cmyk-magenta);
+}
+
+/* Display maths: wide equations scroll inside their own box. */
+
+.math-wrap {
+  max-width: 100%;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.math-wrap .katex-display {
+  margin: 0;
+}
+
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.prose .katex {
+  font-size: 1.05em;
+}
+
+/* Embeds (no current embeds; the card is ready when a text embed appears). */
+
+.vault-embed {
+  display: block;
+  max-width: 78ch;
+  margin: 1.5rem 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(243, 243, 248, 0.28);
+  background-color: rgba(5, 41, 71, 0.32);
+}
+
+.vault-embed__label {
+  display: inline-block;
+  margin-right: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.12em;
+  color: var(--cmyk-cyan);
+}
+
+/* Backlinks -------------------------------------------------------------- */
+
+.vault-backlinks {
+  max-width: 78ch;
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(243, 243, 248, 0.28);
+}
+
+.vault-backlinks__heading {
+  margin: 0 0 0.85rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-60);
+}
+
+.vault-backlinks__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vault-backlinks__item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 0.3rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+}
+
+.vault-backlinks__index {
+  flex: 0 0 2.25rem;
+  font-size: 0.625rem;
+  color: var(--cmyk-cyan);
+}
+
+@media (max-width: 640px) {
+  .vault-breadcrumb {
+    margin-top: 1rem;
+    font-size: 0.625rem;
+  }
+
+  .vault-list__item {
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    gap: 0.55rem;
+    padding: 0.5rem 0.1rem;
+  }
+
+  .vault-list__kind {
+    display: none;
+  }
+
+  .vault-list__link {
+    font-size: 0.8125rem;
+  }
+
+  .vault-pinned {
+    padding: 0.85rem 0.95rem;
+  }
+
+  .prose table {
+    min-width: 36rem;
+  }
+
+  .vault-toc {
+    padding: 0.65rem 0.8rem;
+  }
+}

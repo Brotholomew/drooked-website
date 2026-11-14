@@ -1,0 +1,251 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SubpageHeader from './SubpageHeader.astro';
+import CmykLink from './CmykLink.astro';
+import VaultList from './VaultList.astro';
+import {
+  breadcrumbFor,
+  type Vault,
+  type VaultBacklink,
+  type VaultEntry,
+  type VaultFolder,
+  type VaultNote,
+} from '../lib/vault';
+import type { WikilinkReport } from '../lib/remark-wikilinks';
+
+interface Props {
+  kind: 'root' | 'folder' | 'note';
+  entry: VaultEntry;
+  vaultData: Vault;
+  html?: string;
+  backlinks?: VaultBacklink[];
+  report?: WikilinkReport;
+}
+
+const {
+  kind,
+  entry,
+  vaultData,
+  html = '',
+  backlinks = [],
+  report,
+} = Astro.props;
+
+const pageTitle =
+  kind === 'root' ? 'KNOWLEDGEBASE' : entry.displayTitle;
+
+const description =
+  kind === 'note'
+    ? noteExcerpt(entry as VaultNote)
+    : kind === 'folder'
+      ? `Knowledgebase folder: ${(entry as VaultFolder).displayTitle}. Notes, material references and machine documentation from droocked.origins.`
+      : 'The droocked.origins knowledgebase — filament guides, nozzle and machine notes, and material references.';
+
+function noteExcerpt(note: VaultNote): string {
+  const paragraph = note.body
+    .split(/\r?\n\s*\r?\n/)
+    .map((block) => block.trim())
+    .find(
+      (block) =>
+        block.length > 0 &&
+        !block.startsWith('#') &&
+        !block.startsWith('|') &&
+        !block.startsWith('>') &&
+        !block.startsWith('-') &&
+        !block.startsWith('$$'),
+    );
+
+  const plain = (paragraph ?? '')
+    .replace(/!?\[\[([^[\]\n]+?)\]\]/g, (_raw, inner: string) => {
+      const pipe = inner.indexOf('|');
+      const target = pipe === -1 ? inner : inner.slice(0, pipe);
+      const alias = pipe === -1 ? '' : inner.slice(pipe + 1);
+      return alias || target.replace(/^\d+\s*[-–]\s*/, '');
+    })
+    .replace(/[*_`>]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (!plain) return `${note.displayTitle} — droocked.origins knowledgebase note.`;
+  return plain.length > 155 ? `${plain.slice(0, 152).trimEnd()}…` : plain;
+}
+
+const breadcrumb = breadcrumbFor(vaultData, entry);
+
+const children =
+  kind === 'note' ? [] : ((entry as VaultFolder).children ?? []);
+
+const pinned =
+  kind === 'folder'
+    ? (children.find(
+        (child) =>
+          child.type === 'note' &&
+          child.order === 0 &&
+          /index/i.test(child.displayTitle),
+      ) ?? null)
+    : null;
+
+const listed = pinned
+  ? children.filter((child) => child.route !== pinned.route)
+  : children;
+
+const listedFolderCount = listed.filter(
+  (child) => child.type === 'folder',
+).length;
+const listedNoteCount = listed.filter((child) => child.type === 'note').length;
+
+const note = kind === 'note' ? (entry as VaultNote) : null;
+const toc = note
+  ? note.headings.filter((heading) => heading.level <= 3).slice(0, 24)
+  : [];
+
+if (report && report.missingLinks.length > 0) {
+  for (const missing of report.missingLinks) {
+    console.warn(
+      `vault: unresolved wikilink in ${missing.source}: ${missing.target}${
+        missing.heading ? `#${missing.heading}` : ''
+      } (${missing.reason})`,
+    );
+  }
+}
+---
+
+<PageLayout title={pageTitle} description={description}>
+  <SubpageHeader
+    title={pageTitle}
+    index={kind === 'note' ? entry.orderLabel : null}
+  />
+
+  {
+    kind !== 'root' && (
+      <nav class="vault-breadcrumb" aria-label="Breadcrumb">
+        <ol class="vault-breadcrumb__list" role="list">
+          {
+            breadcrumb.map((crumb, index) => (
+              <li class="vault-breadcrumb__item">
+                {index > 0 && (
+                  <span class="vault-breadcrumb__sep" aria-hidden="true">
+                    /
+                  </span>
+                )}
+                {crumb.route === entry.route ? (
+                  <span class="vault-breadcrumb__current" aria-current="page">
+                    {crumb.displayTitle}
+                  </span>
+                ) : (
+                  <CmykLink
+                    href={crumb.route}
+                    text={
+                      crumb.route === '/knowledgebase/'
+                        ? 'KNOWLEDGEBASE'
+                        : crumb.displayTitle
+                    }
+                    class="vault-breadcrumb__link"
+                  />
+                )}
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+    )
+  }
+
+  {
+    note && note.tags.length > 0 && (
+      <ul class="vault-tags" role="list" aria-label="Tags">
+        {note.tags.map((tag) => (
+          <li class="vault-tags__tag">#{tag}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    kind !== 'note' && (
+      <section class="vault-index" aria-labelledby="vault-index-heading">
+        <h2 class="visually-hidden" id="vault-index-heading">
+          {kind === 'root' ? 'Knowledgebase folders' : 'Folder contents'}
+        </h2>
+        <p class="vault-index__summary">
+          {kind === 'root'
+            ? `${listed.length} top-level folders`
+            : `${listedFolderCount} ${listedFolderCount === 1 ? 'folder' : 'folders'} · ${listedNoteCount} ${listedNoteCount === 1 ? 'note' : 'notes'}`}
+        </p>
+
+        {pinned && (
+          <div class="vault-pinned">
+            <p class="vault-pinned__label">START HERE</p>
+            <p class="vault-pinned__title">
+              <CmykLink href={pinned.route} text={pinned.displayTitle} />
+            </p>
+            <p class="vault-pinned__meta">
+              {pinned.type === 'note' && pinned.tags.length > 0
+                ? pinned.tags.slice(0, 4).map((tag) => `#${tag}`).join('  ')
+                : 'MASTER INDEX'}
+            </p>
+          </div>
+        )}
+
+        {listed.length > 0 ? (
+          <VaultList entries={listed} />
+        ) : (
+          <div class="blueprint-box">
+            <p class="blueprint-box__label">NO ENTRIES YET</p>
+            <p class="blueprint-box__text">
+              THIS FOLDER HAS NO PUBLISHED NOTES.
+            </p>
+          </div>
+        )}
+      </section>
+    )
+  }
+
+  {
+    note && (
+      <article class="vault-note">
+        {toc.length > 3 && (
+          <details class="vault-toc">
+            <summary class="vault-toc__summary">ON THIS PAGE</summary>
+            <ul class="vault-toc__list" role="list">
+              {toc.map((heading) => (
+                <li
+                  class:list={[
+                    'vault-toc__item',
+                    `vault-toc__item--h${heading.level}`,
+                  ]}
+                >
+                  <CmykLink href={`#${heading.id}`} text={heading.text} />
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
+
+        <div class="prose vault-note__body" set:html={html} />
+      </article>
+    )
+  }
+
+  {
+    note && backlinks.length > 0 && (
+      <section class="vault-backlinks" aria-labelledby="vault-backlinks-heading">
+        <h2 class="vault-backlinks__heading" id="vault-backlinks-heading">
+          LINKED FROM
+        </h2>
+        <ul class="vault-backlinks__list" role="list">
+          {backlinks.map((backlink) => (
+            <li class="vault-backlinks__item">
+              <span class="vault-backlinks__index" aria-hidden="true">
+                {backlink.order === null
+                  ? '—'
+                  : String(backlink.order).padStart(2, '0')}
+              </span>
+              <CmykLink href={backlink.route} text={backlink.displayTitle} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</PageLayout>
