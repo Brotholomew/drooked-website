@@ -125,30 +125,23 @@ const jsonLd = [
               </div>
 
               {link.pending ? (
-                <span
-                  class="product-link__pending"
-                  aria-disabled="true"
-                  data-product-id={product.id}
-                  data-storefront-id={link.storefront.id}
-                  data-affiliated={String(link.affiliated)}
-                >
-                  LINK PENDING
-                </span>
+                <span class="product-link__pending">LINK PENDING</span>
               ) : (
-                <a
-                  class="product-link__anchor"
-                  href={link.link}
-                  target="_blank"
-                  rel={link.affiliated
-                    ? 'sponsored noopener noreferrer'
-                    : 'noopener noreferrer'}
-                  data-product-id={product.id}
-                  data-storefront-id={link.storefront.id}
-                  data-affiliated={String(link.affiliated)}
-                >
-                  VISIT STOREFRONT
+                <>
                   <span class="product-link__arrow" aria-hidden="true">→</span>
-                </a>
+                  <a
+                    class="product-link__overlay"
+                    href={link.link}
+                    target="_blank"
+                    rel={link.affiliated
+                      ? 'sponsored noopener noreferrer'
+                      : 'noopener noreferrer'}
+                    aria-label={`Open ${link.storefront.name} in a new tab`}
+                    data-product-id={product.id}
+                    data-storefront-id={link.storefront.id}
+                    data-affiliated={String(link.affiliated)}
+                  />
+                </>
               )}
             </li>
           ))
