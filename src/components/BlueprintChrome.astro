@@ -1,0 +1,21 @@
+---
+const corners = ['tl', 'tr', 'bl', 'br'] as const;
+---
+
+<div class="blueprint-chrome" aria-hidden="true">
+  <div class="blueprint-chrome__frame blueprint-chrome__frame--outer"></div>
+  <div class="blueprint-chrome__frame blueprint-chrome__frame--inner"></div>
+  <div class="blueprint-chrome__edge blueprint-chrome__edge--top"></div>
+  <div class="blueprint-chrome__edge blueprint-chrome__edge--left"></div>
+  <div class="blueprint-chrome__edge blueprint-chrome__edge--right"></div>
+  {
+    corners.map((corner) => (
+      <span class={`blueprint-chrome__corner blueprint-chrome__corner--${corner}`}>
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <circle cx="16" cy="16" r="7" />
+          <path d="M16 0v32M0 16h32" />
+        </svg>
+      </span>
+    ))
+  }
+</div>

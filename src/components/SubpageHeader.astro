@@ -1,0 +1,38 @@
+---
+interface Props {
+  /** Page title, rendered in mono caps as the page's single h1. */
+  title: string;
+  /** Optional blueprint index shown separately from the display title. */
+  index?: string | null;
+}
+
+const { title, index } = Astro.props;
+---
+
+<header class="subpage-header">
+  <div class="subpage-header__nav">
+    <a class="subpage-header__back" href="/" aria-label="Back to home">
+      <svg
+        class="subpage-header__arrow"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M20 12H5" />
+        <path d="M11 18l-6-6 6-6" />
+      </svg>
+    </a>
+    <img
+      class="subpage-header__wordmark"
+      src="/brand/wordmark.svg"
+      alt="droocked"
+      width="106"
+      height="18"
+      draggable="false"
+    />
+  </div>
+  <h1 class="subpage-header__title">
+    {index && <span class="subpage-header__index">{index}</span>}{' '}
+    <span class="subpage-header__name">{title}</span>
+  </h1>
+</header>

@@ -1,0 +1,109 @@
+---
+import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
+import BlueprintChrome from '../components/BlueprintChrome.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
+import LeftRuler from '../components/LeftRuler.astro';
+import TopRuler from '../components/TopRuler.astro';
+import {
+  OG_IMAGE_ALT,
+  OG_IMAGE_HEIGHT,
+  OG_IMAGE_URL,
+  OG_IMAGE_WIDTH,
+  SITE_NAME,
+  canonicalUrl,
+  type JsonLd,
+} from '../lib/seo';
+
+interface Props {
+  /** Complete document title, including the brand suffix where appropriate. */
+  title: string;
+  /** 150–160 character meta description, unique per page. */
+  description: string;
+  /** Route to canonicalise; defaults to the current Astro URL. */
+  canonicalPath?: string;
+  /** Optional robots directive, e.g. `noindex, nofollow` for the 404 page. */
+  robots?: string;
+  /** Open Graph type. */
+  ogType?: 'website' | 'article' | 'product';
+  /** One or more JSON-LD objects. */
+  jsonLd?: JsonLd | JsonLd[];
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  robots,
+  ogType = 'website',
+  jsonLd,
+  bodyClass = '',
+} = Astro.props;
+
+const canonical = canonicalUrl(canonicalPath);
+const jsonLdBlocks: JsonLd[] = jsonLd
+  ? Array.isArray(jsonLd)
+    ? jsonLd
+    : [jsonLd]
+  : [];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#1e4469" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
+    <link rel="canonical" href={canonical} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={OG_IMAGE_URL} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content={String(OG_IMAGE_WIDTH)} />
+    <meta property="og:image:height" content={String(OG_IMAGE_HEIGHT)} />
+    <meta property="og:image:alt" content={OG_IMAGE_ALT} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={OG_IMAGE_URL} />
+    <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
+
+    {
+      jsonLdBlocks.map((block) => (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(block)}
+        />
+      ))
+    }
+
+    <Analytics />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <BlueprintChrome />
+    <TopRuler />
+    <LeftRuler />
+    <slot />
+    <ConsentBanner />
+    <script>
+      import '../scripts/ruler.ts';
+      import '../scripts/consent.ts';
+      import '../scripts/analytics-events.ts';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+body {
+  font-family: var(--font-body);
+  font-size: clamp(1.0625rem, 0.975rem + 0.35vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--ink-80);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 1.35rem + 1.6vw, 2.75rem);
+  letter-spacing: 0.09em;
+}
+
+h2 {
+  font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem);
+}
+
+h3 {
+  font-size: clamp(1.0625rem, 0.95rem + 0.45vw, 1.25rem);
+}
+
+h4,
+h5,
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  margin-bottom: 1em;
+  max-width: 68ch;
+}
+
+strong,
+b {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+small {
+  font-size: 0.8125rem;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+a {
+  color: var(--ink-80);
+  text-decoration-color: var(--ink-60);
+  text-underline-offset: 0.22em;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+a:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a {
+    transition: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--cmyk-cyan);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--cmyk-magenta);
+  color: var(--blueprint-deep);
+}
+
+::-moz-selection {
+  background-color: var(--cmyk-magenta);
+  color: var(--blueprint-deep);
+}

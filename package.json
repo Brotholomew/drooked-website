@@ -8,8 +8,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "validate": "node scripts/validate-content.mjs",
+    "validate": "node --import tsx scripts/validate-content.mjs",
     "brand:build": "node scripts/build-brand-assets.mjs",
+    "og:build": "node scripts/generate-og.mjs",
     "utm": "node scripts/utm.mjs"
   },
   "dependencies": {
@@ -19,6 +20,8 @@
     "astro": "^7.4.12",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
+    "hast-util-to-string": "^3.0.1",
+    "katex": "^0.16.47",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-katex": "^7.0.1",
     "rehype-slug": "^6.0.0",
@@ -28,11 +31,16 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "unified": "^11.0.5",
+    "unist-util-visit": "^5.2.0",
     "zod": "^4.6.7"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
+    "@types/hast": "^3.0.5",
+    "@types/mdast": "^4.0.4",
     "@types/node": "^22.20.5",
+    "sharp": "^0.35.5",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.3"
   }
 }

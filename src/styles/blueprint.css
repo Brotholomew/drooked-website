@@ -1,0 +1,268 @@
+/* -------------------------------------------------------------------------
+   Blueprint sheet: background grid
+   The grid phase starts at the sheet gutter (frame line + ruler) so the
+   major grid lines line up with the ruler band and the content inset.
+   ---------------------------------------------------------------------- */
+
+body {
+  background-image:
+    linear-gradient(
+      to right,
+      var(--grid-line-minor) 0 var(--grid-hairline),
+      transparent var(--grid-hairline) var(--grid-minor)
+    ),
+    linear-gradient(
+      to bottom,
+      var(--grid-line-minor) 0 var(--grid-hairline),
+      transparent var(--grid-hairline) var(--grid-minor)
+    ),
+    linear-gradient(
+      to right,
+      var(--grid-line-major) 0 var(--grid-hairline-major),
+      transparent var(--grid-hairline-major) var(--grid-major)
+    ),
+    linear-gradient(
+      to bottom,
+      var(--grid-line-major) 0 var(--grid-hairline-major),
+      transparent var(--grid-hairline-major) var(--grid-major)
+    );
+  background-size:
+    var(--grid-minor) var(--grid-minor),
+    var(--grid-minor) var(--grid-minor),
+    var(--grid-major) var(--grid-major),
+    var(--grid-major) var(--grid-major);
+  background-position: var(--sheet-gutter) var(--sheet-gutter);
+  background-repeat: repeat;
+}
+
+/* -------------------------------------------------------------------------
+   Fixed chrome: frame lines, ruler edges, registration marks
+   The bottom frame edge is intentionally open; SheetEnd closes the sheet
+   at the end of the content instead.
+   ---------------------------------------------------------------------- */
+
+.blueprint-chrome {
+  position: fixed;
+  inset: 0;
+  z-index: var(--chrome-z);
+  pointer-events: none;
+}
+
+.blueprint-chrome__frame {
+  position: absolute;
+  pointer-events: none;
+}
+
+.blueprint-chrome__frame--outer {
+  inset: var(--frame-outer);
+  border-top: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  opacity: 0.85;
+}
+
+.blueprint-chrome__frame--inner {
+  inset: var(--frame-inner);
+  border-top: 1px solid rgba(243, 243, 248, 0.45);
+  border-right: 1px solid rgba(243, 243, 248, 0.45);
+  border-left: 1px solid rgba(243, 243, 248, 0.45);
+}
+
+.blueprint-chrome__edge {
+  position: absolute;
+  background-color: var(--line);
+  pointer-events: none;
+}
+
+.blueprint-chrome__edge--top {
+  top: calc(var(--frame-outer) + var(--ruler));
+  right: var(--frame-outer);
+  left: var(--frame-outer);
+  height: 1px;
+  opacity: 0.5;
+}
+
+.blueprint-chrome__edge--left {
+  top: calc(var(--frame-outer) + var(--ruler));
+  bottom: var(--frame-outer);
+  left: calc(var(--frame-outer) + var(--ruler));
+  width: 1px;
+  opacity: 0.5;
+}
+
+.blueprint-chrome__edge--right {
+  top: calc(var(--frame-outer) + var(--ruler));
+  right: calc(var(--frame-outer) + var(--ruler));
+  bottom: var(--frame-outer);
+  width: 1px;
+  opacity: 0.3;
+}
+
+.blueprint-chrome__corner {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  color: var(--line);
+  opacity: 0.75;
+}
+
+.blueprint-chrome__corner svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.blueprint-chrome__corner--tl {
+  top: calc(var(--frame-inner) - 16px);
+  left: calc(var(--frame-inner) - 16px);
+}
+
+.blueprint-chrome__corner--tr {
+  top: calc(var(--frame-inner) - 16px);
+  right: calc(var(--frame-inner) - 16px);
+}
+
+.blueprint-chrome__corner--bl {
+  bottom: calc(var(--frame-inner) - 16px);
+  left: calc(var(--frame-inner) - 16px);
+}
+
+.blueprint-chrome__corner--br {
+  right: calc(var(--frame-inner) - 16px);
+  bottom: calc(var(--frame-inner) - 16px);
+}
+
+/* -------------------------------------------------------------------------
+   Top ruler — fixed, static, labels at 64 + 400n blueprint units
+   ---------------------------------------------------------------------- */
+
+.top-ruler {
+  position: fixed;
+  top: var(--frame-outer);
+  right: var(--frame-outer);
+  left: var(--frame-outer);
+  z-index: var(--ruler-z);
+  height: var(--ruler);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.top-ruler__tick {
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: 4px;
+  background-color: rgba(243, 243, 248, 0.35);
+}
+
+.top-ruler__tick--major {
+  height: 9px;
+  background-color: rgba(243, 243, 248, 0.7);
+}
+
+.top-ruler__label {
+  position: absolute;
+  bottom: 12px;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--ink-60);
+  white-space: nowrap;
+}
+
+/* The 64 label sits under the top-left registration crosshair at every
+   viewport width; the 64 tick still marks the coordinate. */
+.top-ruler__label--first {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .top-ruler__label {
+    bottom: 9px;
+    font-size: 0.5rem;
+    letter-spacing: 0.06em;
+  }
+
+  .top-ruler__label--hide-mobile {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Left ruler — fixed band, document-anchored strip translated on scroll
+   ---------------------------------------------------------------------- */
+
+.left-ruler {
+  position: fixed;
+  top: calc(var(--frame-outer) + var(--ruler));
+  bottom: var(--frame-outer);
+  left: var(--frame-outer);
+  z-index: var(--ruler-z);
+  width: var(--ruler);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.left-ruler__strip {
+  position: absolute;
+  top: calc((var(--frame-outer) + var(--ruler)) * -1);
+  right: 0;
+  left: 0;
+  height: 0;
+  will-change: transform;
+}
+
+.left-ruler__tick {
+  position: absolute;
+  right: 0;
+  width: 5px;
+  height: 1px;
+  background-color: rgba(243, 243, 248, 0.35);
+}
+
+.left-ruler__tick--major {
+  width: 9px;
+  background-color: rgba(243, 243, 248, 0.7);
+}
+
+.left-ruler__label {
+  position: absolute;
+  right: 10px;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--ink-60);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .left-ruler__tick {
+    width: 4px;
+  }
+
+  .left-ruler__tick--major {
+    width: 6px;
+  }
+
+  .left-ruler__label {
+    right: 7px;
+    font-size: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* Five-digit sheet coordinates still have to fit the 28px band. */
+  .left-ruler__label--long {
+    right: 6px;
+    font-size: 0.4375rem;
+    letter-spacing: 0;
+  }
+}

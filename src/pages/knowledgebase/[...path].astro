@@ -1,0 +1,29 @@
+---
+import VaultPage from '../../components/VaultPage.astro';
+import { renderMarkdown } from '../../lib/markdown';
+import { vault, routeParam, type VaultEntry } from '../../lib/vault';
+
+export function getStaticPaths() {
+  return [...vault.folders, ...vault.notes].map((entry) => ({
+    params: { path: routeParam(entry) },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as { entry: VaultEntry };
+
+const rendered =
+  entry.type === 'note' ? await renderMarkdown(entry, { vault }) : null;
+
+const backlinks =
+  entry.type === 'note' ? (vault.backlinks.get(entry.route) ?? []) : [];
+---
+
+<VaultPage
+  kind={entry.type}
+  entry={entry}
+  vaultData={vault}
+  html={rendered?.html}
+  backlinks={backlinks}
+  report={rendered?.report}
+/>

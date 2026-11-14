@@ -3,13 +3,13 @@
         "id": "snapmaker-u1",
         "name": "Snapmaker U1",
         "subtitle": "3D printer",
-        "icon": "TODO",
-        "description": "TODO: short description",
+        "icon": "/icons/products/3d-printer.svg",
+        "description": "Four-toolhead 3D printer with a 270 × 270 × 270 mm build volume, 300 °C nozzle, 100 °C bed, and out-of-the-box support for PLA, PETG, TPU, PVA and PCTG.",
         "producer-id": "snapmaker",
         "links": [
             {
                 "storefront-id": "snapmaker-eu",
-                "link": "TODO",
+                "link": "",
                 "affiliated": true
             }
         ]
@@ -18,28 +18,28 @@
         "id": "snapmaker-u1-top-cover",
         "name": "Top cover for the Snapmaker U1",
         "subtitle": "Official Snapmaker U1 extension",
-        "icon": "TODO",
-        "description": "TODO",
+        "icon": "/icons/products/top-cover.svg",
+        "description": "Official enclosure top cover for the Snapmaker U1. Adds passive chamber heating and unlocks the ABS, ASA, PA and PC material profiles.",
         "producer-id": "snapmaker",
         "links": [
             {
                 "storefront-id": "snapmaker-eu",
-                "link": "TODO",
+                "link": "",
                 "affiliated": true
             }
         ]
     },
     {
         "id": "shelly-plug-m-gen-3",
-        "name": "Shell Plug M Gen3",
+        "name": "Shelly Plug M Gen3",
         "subtitle": "smart socket",
-        "icon": "TODO",
-        "description": "TODO",
+        "icon": "/icons/products/smart-plug.svg",
+        "description": "Wi-Fi smart plug with power monitoring, used to switch and meter the printer, dryer or chamber heater.",
         "producer-id": "shelly",
         "links": [
             {
                 "storefront-id": "amazon-de",
-                "link": "TODO",
+                "link": "",
                 "affiliated": true
             }
         ]

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="267.82" height="964.661" viewBox="0 0 267.82 964.661">
+  <title>o_measure</title>
+  <g id="o_measure">
+    <line id="o_left" data-name="o left" x1="0.8" y1="0.8" x2="0.8" y2="919.661" fill="none" stroke="#ababab" stroke-width="1.6" stroke-miterlimit="10" stroke-dasharray="18 10"/>
+    <line id="o_right" data-name="o right" x1="267.02" y1="0.8" x2="267.02" y2="919.661" fill="none" stroke="#ababab" stroke-width="1.6" stroke-miterlimit="10" stroke-dasharray="18 10"/>
+    <line id="ext_left" data-name="ext left" x1="0.8" y1="919.661" x2="0.8" y2="959.661" fill="none" stroke="#ababab" stroke-width="1.2" stroke-miterlimit="10"/>
+    <line id="ext_right" data-name="ext right" x1="267.02" y1="919.661" x2="267.02" y2="959.661" fill="none" stroke="#ababab" stroke-width="1.2" stroke-miterlimit="10"/>
+    <line id="dim" x1="0.8" y1="959.661" x2="267.02" y2="959.661" fill="none" stroke="#ababab" stroke-width="1.4" stroke-miterlimit="10"/>
+    <polygon points="0.8,959.661 14.8,954.661 14.8,964.661" fill="#ababab"/>
+    <polygon points="267.02,959.661 253.02,954.661 253.02,964.661" fill="#ababab"/>
+    <text transform="matrix(1 0 0 1 133.91 945.661)" x="0" y="0" xml:space="preserve" font-family="Menlo, monospace" font-size="18" fill="#ababab" text-anchor="middle"><tspan x="0" y="0">266.2 px</tspan></text>
+  </g>
+</svg>

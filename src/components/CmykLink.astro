@@ -1,0 +1,37 @@
+---
+export interface Props {
+  /** Visible text. Also mirrored into `data-text` for the CMYK layer. */
+  text: string;
+  /** When omitted the component renders a `<span>` instead of a link. */
+  href?: string;
+  class?: string;
+  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false';
+  target?: '_blank' | '_self';
+  rel?: string;
+  ariaLabel?: string;
+}
+
+const {
+  text,
+  href,
+  class: className,
+  ariaCurrent,
+  target,
+  rel,
+  ariaLabel,
+} = Astro.props;
+
+const Tag = href ? 'a' : 'span';
+---
+
+<Tag
+  class:list={['cmyk-link', className]}
+  href={href}
+  target={target}
+  rel={rel}
+  aria-current={ariaCurrent}
+  aria-label={ariaLabel}
+  data-text={text}
+>
+  {text}
+</Tag>

@@ -3,14 +3,14 @@
         "id": "shelly",
         "name": "Shelly",
         "url": "https://shelly.com",
-        "icon": "TODO: enter the url to the icon",
-        "description": "TODO"
+        "icon": "/icons/producers/shelly.svg",
+        "description": "European smart-home manufacturer known for compact Wi-Fi relays, plugs and energy-monitoring devices."
     },
     {
         "id": "snapmaker",
         "name": "Snapmaker",
         "url": "https://snapmaker.com",
-        "icon": "TODO: enter the url to the icon",
-        "description": "A Chinese company that produces 3d printers - TODO a one liner description like that"
+        "icon": "/icons/producers/snapmaker.svg",
+        "description": "Shenzhen-based maker of desktop 3D printers, laser engravers and CNC machines. The U1 is its four-toolhead printer."
     }
 ]

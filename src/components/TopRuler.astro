@@ -1,0 +1,54 @@
+---
+const TICK_START = 40;
+const TICK_STEP = 40;
+const LABEL_START = 64;
+const LABEL_STEP = 400;
+const LABEL_END = 3664;
+
+const labelUnits: number[] = [];
+for (let units = LABEL_START; units <= LABEL_END; units += LABEL_STEP) {
+  labelUnits.push(units);
+}
+
+const tickUnits = new Set<number>();
+for (let units = TICK_START; units < 3840; units += TICK_STEP) {
+  tickUnits.add(units);
+}
+labelUnits.forEach((units) => tickUnits.add(units));
+
+const sortedTicks = [...tickUnits].sort((a, b) => a - b);
+
+/** Blueprint units are mapped to the viewport: 3840 units = 100vw. */
+const toViewport = (units: number) => ((units * 100) / 3840).toFixed(6);
+const positionStyle = (units: number) => `left: calc(${toViewport(units)}vw - var(--frame-outer))`;
+---
+
+<div class="top-ruler" aria-hidden="true">
+  {
+    sortedTicks.map((units) => (
+      <span
+        class:list={[
+          'top-ruler__tick',
+          { 'top-ruler__tick--major': labelUnits.includes(units) },
+        ]}
+        style={positionStyle(units)}
+      />
+    ))
+  }
+  {
+    labelUnits.map((units, index) => (
+      <span
+        class:list={[
+          'top-ruler__label',
+          {
+            'top-ruler__label--hide-mobile': index % 2 === 0,
+            'top-ruler__label--first': index === 0,
+          },
+        ]}
+        style={positionStyle(units)}
+      >
+        {units}
+      </span>
+    ))
+  }
+</div>

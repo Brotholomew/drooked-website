@@ -1,0 +1,89 @@
+---
+import layout from '../../brand/layout.json';
+
+const { headerCrop, layers } = layout;
+
+type LayerBounds = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+const percent = (value: number, total: number) => `${(value / total) * 100}%`;
+
+/**
+ * Convert artboard coordinates to percentages inside the header crop, so every
+ * layer keeps the original 3840 x 1320 VectorCraft geometry at any width.
+ */
+const layerStyle = (bounds: LayerBounds) =>
+  [
+    `left: ${percent(bounds.x - headerCrop.x, headerCrop.width)}`,
+    `top: ${percent(bounds.y - headerCrop.y, headerCrop.height)}`,
+    `width: ${percent(bounds.width, headerCrop.width)}`,
+    `height: ${percent(bounds.height, headerCrop.height)}`,
+  ].join('; ');
+---
+
+<div class="header-composition">
+  <img
+    class="header-composition__layer header-composition__layer--full"
+    src="/brand/header-sketches.svg"
+    alt=""
+    aria-hidden="true"
+    draggable="false"
+  />
+  <img
+    class="header-composition__layer"
+    style={layerStyle(layers.caliper)}
+    src="/brand/caliper.svg"
+    alt=""
+    aria-hidden="true"
+    draggable="false"
+  />
+  <img
+    class="header-composition__layer"
+    style={layerStyle(layers.detail_d)}
+    src="/brand/detail_d.svg"
+    alt=""
+    aria-hidden="true"
+    draggable="false"
+  />
+  <img
+    class="header-composition__layer"
+    style={layerStyle(layers.o_measure)}
+    src="/brand/o_measure.svg"
+    alt=""
+    aria-hidden="true"
+    draggable="false"
+  />
+  <img
+    class="header-composition__layer header-composition__layer--full"
+    src="/brand/header-lockup.svg"
+    alt="droocked origins"
+    aria-hidden="true"
+    draggable="false"
+  />
+</div>
+
+<style>
+  .header-composition {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3840 / 1320;
+  }
+
+  .header-composition__layer {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .header-composition__layer--full {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

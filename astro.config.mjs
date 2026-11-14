@@ -8,5 +8,14 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // The production origin comes from `site`, so sitemap URLs never depend
+      // on the machine or preview host that ran the build.
+      filter: (page) => {
+        const { pathname } = new URL(page);
+        return pathname !== '/404/' && pathname !== '/404.html';
+      },
+    }),
+  ],
 });

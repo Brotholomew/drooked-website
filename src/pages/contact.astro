@@ -1,0 +1,27 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SubpageHeader from '../components/SubpageHeader.astro';
+import CmykLink from '../components/CmykLink.astro';
+---
+
+<PageLayout
+  title="Contact — DROOCKED.ORIGINS"
+  description="Contact DROOCKED.ORIGINS — questions, collaborations and all inquiries about 3D printing products, notes and projects."
+>
+  <SubpageHeader title="CONTACT ME" />
+
+  <section class="page-section">
+    <p class="contact-copy">
+      Hi, I am Lenny and I will be starting a brand called droocked. This page is
+      documenting how I got there - the products that I used and the knowledge
+      that i gathered during learning about 3d printing. I hope that you find the
+      things that I shared useful... somehow. Please contact me for all inquiries
+      using the mail below
+    </p>
+
+    <p class="contact-mail">
+      <span class="contact-mail__label">mail</span>
+      <CmykLink href="mailto:contact@droocked.com" text="contact@droocked.com" />
+    </p>
+  </section>
+</PageLayout>

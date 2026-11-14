@@ -1,0 +1,698 @@
+/* -------------------------------------------------------------------------
+   Skip link
+   ---------------------------------------------------------------------- */
+
+.skip-link {
+  position: fixed;
+  top: calc(var(--frame-outer) + 0.5rem);
+  left: calc(var(--frame-outer) + 0.5rem);
+  z-index: var(--skip-link-z);
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--line);
+  background-color: var(--blueprint-deep);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translateY(-200%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* -------------------------------------------------------------------------
+   Layout shells
+   ---------------------------------------------------------------------- */
+
+.home-shell,
+.page-shell {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+}
+
+.home-shell__main,
+.page-shell__main {
+  flex: 1 0 auto;
+  padding: var(--content-y) var(--content-right) var(--content-bottom) var(--content-x);
+}
+
+.home-shell__main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Homepage: the header composition spans the viewport so the wordmark keeps
+   its 62.2% of 3840 scale. Horizontal padding is zero; the top and bottom
+   insets stay inside the sheet. */
+.layout-home .home-shell__main {
+  padding: var(--content-y) 0 var(--grid-minor);
+}
+
+/* -------------------------------------------------------------------------
+   SheetEnd — content-driven closing lines, never fixed to the viewport
+   ---------------------------------------------------------------------- */
+
+.sheet-end {
+  position: relative;
+  flex: 0 0 auto;
+  height: var(--grid-major);
+}
+
+.sheet-end__line {
+  position: absolute;
+  right: var(--frame-outer);
+  left: var(--frame-outer);
+  height: 1px;
+  background-color: var(--line);
+  pointer-events: none;
+}
+
+.sheet-end__line--outer {
+  top: 0;
+  opacity: 0.8;
+}
+
+.sheet-end__line--inner {
+  top: calc(var(--frame-inner) - var(--frame-outer));
+  opacity: 0.4;
+}
+
+.sheet-end__corner {
+  position: absolute;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--line);
+  opacity: 0.65;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.sheet-end__corner--left {
+  left: var(--frame-outer);
+}
+
+.sheet-end__corner--right {
+  right: var(--frame-outer);
+  transform: translate(50%, -50%);
+}
+
+.sheet-end__corner svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+/* -------------------------------------------------------------------------
+   Footer — ruler-style closing band on subpages only
+   ---------------------------------------------------------------------- */
+
+.site-footer {
+  flex: 0 0 auto;
+  margin-top: auto;
+  padding-bottom: calc(var(--frame-outer) + var(--grid-minor));
+}
+
+.site-footer__scale {
+  height: 12px;
+  margin: 0 var(--frame-outer);
+  border-top: 1px solid rgba(243, 243, 248, 0.65);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(243, 243, 248, 0.5) 0 1px,
+      transparent 1px 12px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(243, 243, 248, 0.65) 0 1px,
+      transparent 1px 60px
+    );
+  background-repeat: no-repeat;
+  background-size: 100% 5px, 100% 10px;
+  pointer-events: none;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: var(--grid-minor) var(--content-right) 0 var(--content-x);
+}
+
+.site-footer__credit {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-60);
+}
+
+.site-footer__link {
+  color: var(--ink-80);
+  text-decoration-color: var(--ink-60);
+}
+
+.site-footer__link:hover {
+  color: var(--ink);
+}
+
+.site-footer__nowrap {
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------------------
+   Legal links row
+   ---------------------------------------------------------------------- */
+
+.legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.6rem;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-60);
+}
+
+.legal-links__link,
+.legal-links__button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-60);
+  font: inherit;
+  letter-spacing: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--ink-60);
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.legal-links__link:hover,
+.legal-links__button:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);
+}
+
+.legal-links__sep {
+  color: var(--ink-60);
+}
+
+@media (max-width: 640px) {
+  .site-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: var(--sheet-gutter);
+    padding-left: var(--sheet-gutter);
+  }
+
+  .site-footer__credit {
+    font-size: 0.625rem;
+    letter-spacing: 0.03em;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Subpage shell: compact back / wordmark / title row
+   ---------------------------------------------------------------------- */
+
+.subpage-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(243, 243, 248, 0.35);
+}
+
+.subpage-header__nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.subpage-header__back {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(243, 243, 248, 0.4);
+  color: var(--ink-80);
+  text-decoration: none;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.subpage-header__back:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.subpage-header__arrow {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+.subpage-header__wordmark {
+  width: auto;
+  height: 1.125rem;
+}
+
+.subpage-header__title {
+  margin: 0;
+  min-width: 0;
+  font-size: clamp(1.125rem, 1rem + 0.7vw, 1.625rem);
+  letter-spacing: 0.1em;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.subpage-header__index {
+  display: inline-block;
+  margin-right: 0.6em;
+  padding: 0.05em 0.35em;
+  border: 1px solid rgba(0, 196, 196, 0.55);
+  color: var(--cmyk-cyan);
+  font-size: 0.62em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  vertical-align: 0.12em;
+}
+
+/* -------------------------------------------------------------------------
+   Static subpage content
+   ---------------------------------------------------------------------- */
+
+.page-section {
+  margin-top: clamp(1.75rem, 5vw, 3rem);
+}
+
+.page-section + .page-section {
+  margin-top: clamp(2rem, 6vw, 3.25rem);
+}
+
+.page-copy {
+  max-width: 68ch;
+}
+
+.page-copy + .page-copy {
+  margin-top: 1.25rem;
+}
+
+/* Blueprint plate used for placeholders and the 404 sheet. */
+.blueprint-box {
+  position: relative;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  border: 1px solid rgba(243, 243, 248, 0.5);
+  background-color: rgba(5, 41, 71, 0.28);
+}
+
+.blueprint-box::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(243, 243, 248, 0.16);
+  pointer-events: none;
+}
+
+.blueprint-box__label {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.blueprint-box__text {
+  margin: 0;
+  max-width: 54ch;
+  font-size: 0.9375rem;
+  color: var(--ink-80);
+}
+
+/* Contact */
+.contact-copy {
+  max-width: 62ch;
+}
+
+.contact-mail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  align-items: baseline;
+  margin-top: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  letter-spacing: 0.04em;
+}
+
+.contact-mail__label {
+  color: var(--ink-60);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* -------------------------------------------------------------------------
+   Privacy policy
+   ---------------------------------------------------------------------- */
+
+.privacy {
+  max-width: 74ch;
+}
+
+.privacy__updated {
+  margin-top: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+.privacy h2 {
+  margin: 2.25rem 0 0.75rem;
+  font-size: clamp(1rem, 0.95rem + 0.35vw, 1.125rem);
+}
+
+.privacy h2:first-of-type {
+  margin-top: 0;
+}
+
+.privacy p,
+.privacy ul,
+.privacy ol {
+  max-width: 72ch;
+}
+
+.privacy ul,
+.privacy ol {
+  margin: 0 0 1em;
+  padding-left: 1.25em;
+}
+
+.privacy li {
+  margin-bottom: 0.35em;
+}
+
+.privacy strong {
+  color: var(--ink);
+}
+
+.privacy__note {
+  padding-left: 0.9rem;
+  border-left: 2px solid rgba(243, 243, 248, 0.35);
+  font-size: 0.9375rem;
+  color: var(--ink-60);
+}
+
+.legal-table-wrap {
+  margin: 0.5rem 0 1.5rem;
+  overflow-x: auto;
+}
+
+.legal-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.legal-table th,
+.legal-table td {
+  padding: 0.55rem 0.9rem 0.55rem 0;
+  border-bottom: 1px solid rgba(243, 243, 248, 0.2);
+  text-align: left;
+  vertical-align: top;
+}
+
+.legal-table th {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.legal-table td {
+  color: var(--ink-80);
+}
+
+.legal-table code {
+  color: var(--ink);
+  font-size: 0.8125rem;
+}
+
+.privacy-actions {
+  margin-top: 2rem;
+}
+
+.privacy-consent-button {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(243, 243, 248, 0.55);
+  color: var(--ink-80);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.privacy-consent-button:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* -------------------------------------------------------------------------
+   Consent banner — bottom blueprint plate, never a full-screen modal
+   ---------------------------------------------------------------------- */
+
+.consent-banner {
+  position: fixed;
+  right: var(--content-right);
+  bottom: calc(var(--frame-outer) + var(--grid-minor));
+  left: var(--content-x);
+  z-index: var(--consent-z);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: auto;
+  max-width: 64rem;
+  max-height: calc(100dvh - var(--content-y) - var(--content-bottom));
+  margin-inline: auto;
+  padding: clamp(0.9rem, 2.2vw, 1.25rem) clamp(1rem, 2.6vw, 1.5rem);
+  overflow-y: auto;
+  border: 1px solid rgba(243, 243, 248, 0.6);
+  background-color: rgba(5, 41, 71, 0.96);
+  box-shadow: 0 0 0 1px rgba(5, 41, 71, 0.4), 0 12px 40px rgba(5, 41, 71, 0.45);
+}
+
+.consent-banner[hidden] {
+  display: none;
+}
+
+.consent-banner::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(243, 243, 248, 0.18);
+  pointer-events: none;
+}
+
+.consent-banner__body {
+  flex: 1 1 24rem;
+  min-width: 0;
+}
+
+.consent-banner__label {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cmyk-cyan);
+}
+
+.consent-banner__text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--ink-80);
+}
+
+.consent-banner__nowrap {
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.consent-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+  gap: 0.6rem 0.85rem;
+  align-items: center;
+}
+
+.consent-banner__button {
+  padding: 0.5rem 0.95rem;
+  border: 1px solid rgba(243, 243, 248, 0.55);
+  background-color: transparent;
+  color: var(--ink-80);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.consent-banner__button:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.consent-banner__button--accept {
+  border-color: rgba(0, 196, 196, 0.75);
+  color: var(--ink);
+}
+
+.consent-banner__button--accept:hover {
+  border-color: var(--cmyk-cyan);
+  background-color: rgba(0, 196, 196, 0.14);
+}
+
+.consent-banner__button:focus-visible,
+.consent-banner__link:focus-visible {
+  outline: 2px solid var(--cmyk-cyan);
+  outline-offset: 3px;
+}
+
+.consent-banner__link {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  text-decoration: underline;
+  text-decoration-color: var(--ink-60);
+  text-underline-offset: 0.2em;
+}
+
+.consent-banner__link:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .consent-banner {
+    right: var(--sheet-gutter);
+    bottom: calc(var(--frame-outer) + var(--grid-minor));
+    left: var(--sheet-gutter);
+    align-items: stretch;
+  }
+
+  .consent-banner__body {
+    flex-basis: 100%;
+  }
+
+  .consent-banner__text {
+    font-size: 0.8125rem;
+  }
+
+  .consent-banner__actions {
+    gap: 0.5rem;
+  }
+
+  .consent-banner__button {
+    padding: 0.45rem 0.75rem;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   404
+   ---------------------------------------------------------------------- */
+
+.not-found {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.not-found__code {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(3.5rem, 2rem + 12vw, 9rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+
+.not-found__text {
+  margin: 0;
+  max-width: 46ch;
+}
+
+.not-found__link {
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .subpage-header {
+    gap: 0.7rem 0.9rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .subpage-header__nav {
+    gap: 0.65rem;
+  }
+
+  .subpage-header__back {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .subpage-header__wordmark {
+    height: 0.95rem;
+  }
+
+  .subpage-header__title {
+    flex-basis: 100%;
+    font-size: 1.125rem;
+    letter-spacing: 0.08em;
+    text-align: left;
+  }
+}

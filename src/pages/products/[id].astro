@@ -1,0 +1,227 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SubpageHeader from '../../components/SubpageHeader.astro';
+import CmykLink from '../../components/CmykLink.astro';
+import {
+  displayUrl,
+  loadProducts,
+  productRoute,
+  type Product,
+  type Storefront,
+} from '../../lib/products';
+import {
+  breadcrumbJsonLd,
+  clampText,
+  itemPageJsonLd,
+} from '../../lib/seo';
+
+export function getStaticPaths() {
+  const { products } = loadProducts();
+  return products.map((product, index) => ({
+    params: { id: product.id },
+    props: {
+      product,
+      indexLabel: String(index + 1).padStart(2, '0'),
+    },
+  }));
+}
+
+interface Props {
+  product: Product;
+  indexLabel: string;
+}
+
+const { product, indexLabel } = Astro.props as Props;
+
+// One block per storefront even if a product later links to it twice.
+const storefronts: Storefront[] = [];
+const seenStorefronts = new Set<string>();
+for (const link of product.links) {
+  if (seenStorefronts.has(link.storefront.id)) continue;
+  seenStorefronts.add(link.storefront.id);
+  storefronts.push(link.storefront);
+}
+
+const pendingCount = product.links.filter((link) => link.pending).length;
+
+const canonicalPath = productRoute(product);
+const description = clampText(
+  `${product.subtitle} — ${product.description}`,
+);
+
+const jsonLd = [
+  itemPageJsonLd({
+    name: product.name,
+    description,
+    path: canonicalPath,
+    product: {
+      name: product.name,
+      description: product.description,
+      category: product.subtitle,
+      image: product.icon,
+      brand: product.producer.name,
+    },
+  }),
+  breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Products', path: '/products/' },
+    { name: product.name, path: canonicalPath },
+  ]),
+];
+---
+
+<PageLayout
+  title={`${product.name} — DROOCKED.ORIGINS`}
+  description={description}
+  canonicalPath={canonicalPath}
+  jsonLd={jsonLd}
+>
+  <SubpageHeader title={product.name} index={indexLabel} />
+
+  <article class="product-detail">
+    <section class="product-detail__section product-hero" aria-labelledby="product-overview">
+      <span
+        class="product-hero__icon"
+        style={`--icon-url: url("${product.icon}")`}
+        aria-hidden="true"
+      />
+      <div class="product-hero__body">
+        <p class="product-detail__label" id="product-overview">PRODUCT</p>
+        <p class="product-hero__subtitle">{product.subtitle}</p>
+        <p class="product-hero__description">{product.description}</p>
+      </div>
+    </section>
+
+    <section class="product-detail__section product-entity" aria-labelledby="product-producer">
+      <p class="product-detail__label" id="product-producer">PRODUCER</p>
+      <div class="product-entity__row">
+        <span
+          class="product-entity__icon product-entity__icon--badge"
+          style={`--icon-url: url("${product.producer.icon}")`}
+          aria-hidden="true"
+        />
+        <div class="product-entity__body">
+          <h2 class="product-entity__name">{product.producer.name}</h2>
+          <p class="product-entity__url">
+            <CmykLink
+              href={product.producer.url}
+              text={displayUrl(product.producer.url)}
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+          </p>
+          <p class="product-entity__text">{product.producer.description}</p>
+        </div>
+      </div>
+    </section>
+
+    {
+      storefronts.map((storefront, index) => (
+        <section
+          class="product-detail__section product-entity"
+          aria-labelledby={`product-storefront-${storefront.id}`}
+        >
+          <p class="product-detail__label" id={`product-storefront-${storefront.id}`}>
+            STOREFRONT {String(index + 1).padStart(2, '0')}
+          </p>
+          <div class="product-entity__row">
+            <span
+              class="product-entity__icon product-entity__icon--badge"
+              style={`--icon-url: url("${storefront.icon}")`}
+              aria-hidden="true"
+            />
+            <div class="product-entity__body">
+              <h2 class="product-entity__name">{storefront.name}</h2>
+              <p class="product-entity__url">
+                <CmykLink
+                  href={storefront.url}
+                  text={displayUrl(storefront.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
+              </p>
+              <p class="product-entity__text">{storefront.description}</p>
+            </div>
+          </div>
+        </section>
+      ))
+    }
+
+    <section class="product-detail__section product-links-section" aria-labelledby="product-links">
+      <div class="product-links-head">
+        <p class="product-detail__label" id="product-links">LINKS</p>
+        <span class="product-links-head__state">
+          {pendingCount === product.links.length
+            ? 'ALL LINKS PENDING'
+            : `${product.links.length - pendingCount} LIVE / ${pendingCount} PENDING`}
+        </span>
+      </div>
+
+      <ul class="product-links" role="list">
+        {
+          product.links.map((link) => (
+            <li
+              class="product-link"
+              data-product-id={product.id}
+              data-storefront-id={link.storefront.id}
+              data-affiliated={String(link.affiliated)}
+              data-state={link.pending ? 'pending' : 'live'}
+            >
+              <div class="product-link__info">
+                <div class="product-link__head">
+                  <span class="product-link__storefront">
+                    {link.storefront.name}
+                  </span>
+                  {link.affiliated && (
+                    <span class="product-link__badge">AFFILIATE</span>
+                  )}
+                </div>
+                <p class="product-link__url">{displayUrl(link.storefront.url)}</p>
+              </div>
+
+              {link.pending ? (
+                <span
+                  class="product-link__pending"
+                  aria-disabled="true"
+                  data-product-id={product.id}
+                  data-storefront-id={link.storefront.id}
+                  data-affiliated={String(link.affiliated)}
+                >
+                  LINK PENDING
+                </span>
+              ) : (
+                <a
+                  class="product-link__anchor"
+                  href={link.link}
+                  target="_blank"
+                  rel={link.affiliated
+                    ? 'sponsored noopener noreferrer'
+                    : 'noopener noreferrer'}
+                  data-product-id={product.id}
+                  data-storefront-id={link.storefront.id}
+                  data-affiliated={String(link.affiliated)}
+                >
+                  VISIT STOREFRONT
+                  <span class="product-link__arrow" aria-hidden="true">→</span>
+                </a>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <p class="affiliate-disclosure">
+      <strong>AFFILIATE DISCLOSURE</strong> — Affiliate links are marked with an
+      <span class="affiliate-disclosure__badge">AFFILIATE</span> badge and open
+      in a new tab. If you buy through one, droocked.origins may earn a
+      commission at no extra cost to you. Empty links are shown as
+      <span class="affiliate-disclosure__pending">LINK PENDING</span> and become
+      active when the URL is supplied.
+    </p>
+
+    <p class="product-detail__back">
+      <CmykLink href="/products/" text="back to products" />
+    </p>
+  </article>
+</PageLayout>
