@@ -1,0 +1,47 @@
+[
+    {
+        "id": "snapmaker-u1",
+        "name": "Snapmaker U1",
+        "subtitle": "3D printer",
+        "icon": "TODO",
+        "description": "TODO: short description",
+        "producer-id": "snapmaker",
+        "links": [
+            {
+                "storefront-id": "snapmaker-eu",
+                "link": "TODO",
+                "affiliated": true
+            }
+        ]
+    },
+    {
+        "id": "snapmaker-u1-top-cover",
+        "name": "Top cover for the Snapmaker U1",
+        "subtitle": "Official Snapmaker U1 extension",
+        "icon": "TODO",
+        "description": "TODO",
+        "producer-id": "snapmaker",
+        "links": [
+            {
+                "storefront-id": "snapmaker-eu",
+                "link": "TODO",
+                "affiliated": true
+            }
+        ]
+    },
+    {
+        "id": "shelly-plug-m-gen-3",
+        "name": "Shell Plug M Gen3",
+        "subtitle": "smart socket",
+        "icon": "TODO",
+        "description": "TODO",
+        "producer-id": "shelly",
+        "links": [
+            {
+                "storefront-id": "amazon-de",
+                "link": "TODO",
+                "affiliated": true
+            }
+        ]
+    }
+]

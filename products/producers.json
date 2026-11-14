@@ -1,0 +1,16 @@
+[
+    {
+        "id": "shelly",
+        "name": "Shelly",
+        "url": "https://shelly.com",
+        "icon": "TODO: enter the url to the icon",
+        "description": "TODO"
+    },
+    {
+        "id": "snapmaker",
+        "name": "Snapmaker",
+        "url": "https://snapmaker.com",
+        "icon": "TODO: enter the url to the icon",
+        "description": "A Chinese company that produces 3d printers - TODO a one liner description like that"
+    }
+]
