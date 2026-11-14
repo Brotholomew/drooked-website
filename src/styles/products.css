@@ -36,7 +36,7 @@
   display: inline-block;
   padding: 0.05rem 0.3rem;
   border: 1px solid var(--cmyk-magenta);
-  color: var(--cmyk-magenta);
+  color: var(--cmyk-magenta-ink);
   font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -275,7 +275,7 @@
     45deg,
     var(--cmyk-cyan) 0 0.18em,
     var(--cmyk-yellow) 0.18em 0.36em,
-    var(--cmyk-magenta) 0.36em 0.54em
+    var(--cmyk-magenta-ink) 0.36em 0.54em
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -544,7 +544,7 @@
   font-size: 0.5625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--cmyk-magenta);
+  color: var(--cmyk-magenta-ink);
 }
 
 .product-link__url {

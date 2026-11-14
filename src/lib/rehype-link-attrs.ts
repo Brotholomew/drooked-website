@@ -81,7 +81,7 @@ const rehypeLinkAttrs: Plugin<[], Root> = () => {
       const wrapper: Element = {
         type: 'element',
         tagName: 'div',
-        properties: { className: ['table-wrap'] },
+        properties: { className: ['table-wrap'], tabIndex: 0 },
         children: [node],
       };
 
@@ -110,7 +110,7 @@ const rehypeLinkAttrs: Plugin<[], Root> = () => {
       const wrapper: Element = {
         type: 'element',
         tagName: 'div',
-        properties: { className: ['math-wrap'] },
+        properties: { className: ['math-wrap'], tabIndex: 0 },
         children: [node],
       };
 

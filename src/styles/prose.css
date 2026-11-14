@@ -356,13 +356,14 @@
 .vault-link--missing {
   padding: 0 0.1em;
   border-bottom: 1px dashed var(--cmyk-magenta);
-  color: var(--cmyk-magenta);
+  color: var(--cmyk-magenta-ink);
   cursor: help;
 }
 
 /* Tables */
 
 .table-wrap {
+  position: relative;
   max-width: 100%;
   margin: 1.5rem 0;
   overflow-x: auto;
@@ -487,7 +488,7 @@
 .callout--error .callout__title,
 .callout--failure .callout__title,
 .callout--bug .callout__title {
-  color: var(--cmyk-magenta);
+  color: var(--cmyk-magenta-ink);
 }
 
 /* Display maths: wide equations scroll inside their own box. */
@@ -502,6 +503,8 @@
 
 .math-wrap .katex-display {
   margin: 0;
+  max-width: none;
+  overflow: visible;
 }
 
 .katex-display {

@@ -13,6 +13,8 @@
   --cmyk-cyan: #00c4c4;
   --cmyk-yellow: #c7c738;
   --cmyk-magenta: #c56abd;
+  /* Magenta for text on blueprint blue: same hue, enough luminance for AA. */
+  --cmyk-magenta-ink: #e6a0df;
 
   /* Type */
   --font-body: "Roboto Slab", Georgia, serif;

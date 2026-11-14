@@ -12,7 +12,7 @@
     45deg,
     var(--cmyk-cyan) 0 0.18em,
     var(--cmyk-yellow) 0.18em 0.36em,
-    var(--cmyk-magenta) 0.36em 0.54em
+    var(--cmyk-magenta-ink) 0.36em 0.54em
   );
 
   position: relative;
@@ -20,6 +20,7 @@
   color: var(--ink-80);
   text-decoration: none;
   white-space: normal;
+  overflow-wrap: anywhere;
   transform: translateY(0);
   transition:
     transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -43,6 +44,7 @@
   transition: clip-path 360ms cubic-bezier(0.22, 0.8, 0.3, 1);
   pointer-events: none;
   white-space: inherit;
+  overflow-wrap: inherit;
 }
 
 .cmyk-link::after {
@@ -147,7 +149,7 @@
     45deg,
     var(--cmyk-cyan) 0 0.12rem,
     var(--cmyk-yellow) 0.12rem 0.24rem,
-    var(--cmyk-magenta) 0.24rem 0.36rem
+    var(--cmyk-magenta-ink) 0.24rem 0.36rem
   );
   clip-path: inset(0 100% 0 0);
   transition: clip-path 360ms cubic-bezier(0.22, 0.8, 0.3, 1);

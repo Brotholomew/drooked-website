@@ -1,3 +1,13 @@
+---
+title: "Modifications"
+tags:
+  - snapmaker-u1
+  - modifications
+  - hardware
+  - firmware
+  - 3d-printing
+---
+
 # Parts bought from the official snapmaker store
 - [x] Snapmaker U1
 - [x] Top cover
