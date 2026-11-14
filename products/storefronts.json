@@ -3,12 +3,14 @@
         "id": "amazon-de",
         "name": "Amazon.de",
         "url": "https://amazon.de",
-        "icon": "TODO: enter the url to the icon"
+        "icon": "/icons/storefronts/amazon-de.svg",
+        "description": "German Amazon marketplace for quick shipping and returns within Germany and the EU."
     },
     {
         "id": "snapmaker-eu",
         "name": "Snapmaker EU",
         "url": "https://eu.snapmaker.com",
-        "icon": "TODO: enter the url to the icon"
+        "icon": "/icons/storefronts/snapmaker-eu.svg",
+        "description": "Snapmaker's official European store."
     }
 ]

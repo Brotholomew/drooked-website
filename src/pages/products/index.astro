@@ -1,0 +1,92 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SubpageHeader from '../../components/SubpageHeader.astro';
+import { loadProducts, productRoute } from '../../lib/products';
+
+const { products } = loadProducts();
+---
+
+<PageLayout
+  title="Products"
+  description="Products used and documented by droocked.origins — 3D printers, enclosures, and smart-home hardware, with producer and storefront details."
+>
+  <SubpageHeader title="PRODUCTS" />
+
+  <section class="page-section products-intro" aria-labelledby="products-intro-heading">
+    <h2 class="visually-hidden" id="products-intro-heading">Product catalogue</h2>
+    <p>
+      Hardware and tools that show up in the videos and notes. Every sheet lists
+      the producer, the storefront, and the direct link as soon as it exists.
+    </p>
+    <p class="products-disclosure">
+      <strong>AFFILIATE DISCLOSURE</strong> — Some outgoing links are affiliate
+      links, marked with an <span class="products-disclosure__badge">AFFILIATE</span>
+      badge. If you buy through one, droocked.origins may earn a commission at no
+      extra cost to you. Links without a URL yet are marked
+      <span class="products-disclosure__pending">LINK PENDING</span>.
+    </p>
+  </section>
+
+  <section class="page-section" aria-labelledby="products-grid-heading">
+    <div class="products-grid-head">
+      <h2 class="products-grid-head__title" id="products-grid-heading">
+        CATALOGUE
+      </h2>
+      <span class="products-grid-head__count">
+        {products.length} {products.length === 1 ? 'ENTRY' : 'ENTRIES'}
+      </span>
+    </div>
+
+    <ul class="product-grid" role="list">
+      {
+        products.map((product, index) => (
+          <li class="product-grid__item">
+            <a
+              class="product-card"
+              href={productRoute(product)}
+              data-product-id={product.id}
+            >
+              <span class="product-card__ticks" aria-hidden="true">
+                <span class="product-card__tick product-card__tick--tl" />
+                <span class="product-card__tick product-card__tick--tr" />
+                <span class="product-card__tick product-card__tick--bl" />
+                <span class="product-card__tick product-card__tick--br" />
+              </span>
+
+              <div class="product-card__top">
+                <span
+                  class="product-card__icon"
+                  style={`--icon-url: url("${product.icon}")`}
+                  aria-hidden="true"
+                />
+                <span class="product-card__index" aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </div>
+
+              <div class="product-card__body">
+                <p class="product-card__subtitle">{product.subtitle}</p>
+                <h2 class="product-card__name" data-text={product.name}>
+                  {product.name}
+                </h2>
+                <p class="product-card__description">
+                  {product.description}
+                </p>
+              </div>
+
+              <div class="product-card__footer">
+                <span class="product-card__producer">
+                  {product.producer.name}
+                </span>
+                <span class="product-card__cta" aria-hidden="true">
+                  OPEN PRODUCT
+                  <span class="product-card__arrow">→</span>
+                </span>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</PageLayout>

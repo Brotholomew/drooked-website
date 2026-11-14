@@ -232,6 +232,50 @@ if (routes.length !== expectedRouteCount) {
   );
 }
 
+// --- Products -------------------------------------------------------------
+
+let productReport = null;
+try {
+  const productsModule = await import('../src/lib/products.ts');
+  productReport = productsModule.validateProductSources();
+} catch (error) {
+  fail(
+    `products: could not load the product sources: ${
+      error instanceof Error ? error.message : String(error)
+    }`,
+  );
+}
+
+let productRoutes = [];
+if (productReport) {
+  for (const failure of productReport.failures) {
+    fail(`products: ${failure}`);
+  }
+  for (const warning of productReport.warnings) {
+    warn(warning);
+  }
+  productRoutes = productReport.products.map(
+    (product) => `/products/${product.id}/`,
+  );
+}
+
+// The only product page sources are the index and the shared detail template.
+const productPagesDir = path.join(ROOT, 'src', 'pages', 'products');
+if (fs.existsSync(productPagesDir)) {
+  const allowed = new Set(['index.astro', '[id].astro']);
+  for (const entry of fs.readdirSync(productPagesDir, { withFileTypes: true })) {
+    if (!entry.isFile()) {
+      fail(`products: unexpected directory in src/pages/products: ${entry.name}`);
+      continue;
+    }
+    if (entry.name.endsWith('.astro') && !allowed.has(entry.name)) {
+      fail(`products: per-product page source is not allowed: ${entry.name}`);
+    }
+  }
+} else {
+  fail('products: missing src/pages/products');
+}
+
 // --- Summary --------------------------------------------------------------
 
 const noteRoutes = vault.notes.length;
@@ -247,6 +291,15 @@ console.log(`  wikilinks:           ${wikilinkCount} (${wikilinkCount - missing.
 console.log(`  titles:              ${vault.notes.length - derivedTitles} from frontmatter, ${derivedTitles} derived from filename`);
 console.log(`  duplicate routes:    ${routeSet.size === routes.length ? 0 : routes.length - routeSet.size}`);
 console.log(`  duplicate slugs:     ${duplicateSlugs}`);
+console.log(`  products:            ${productReport ? productReport.counts.products : 0}`);
+console.log(`  producers:           ${productReport ? productReport.counts.producers : 0}`);
+console.log(`  storefronts:         ${productReport ? productReport.counts.storefronts : 0}`);
+console.log(`  product links:       ${
+  productReport
+    ? `${productReport.counts.links} (${productReport.counts.liveLinks} live, ${productReport.counts.pendingLinks} pending)`
+    : '0'
+}`);
+console.log(`  product routes:      ${productRoutes.length}`);
 
 if (warnings.length > 0) {
   console.log('\nWARNINGS');
