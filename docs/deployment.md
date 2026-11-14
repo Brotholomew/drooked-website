@@ -221,15 +221,15 @@ The GitHub token is used only for local `gh` calls. The deploy workflow needs no
 it authenticates to Pages with the short-lived `GITHUB_TOKEN` and the `id-token: write`
 permission.
 
-Before pushing, sanity-check for accidental secret files:
+Before pushing, sanity-check for accidental secret material:
 
 ```bash
 git status --short
-grep -R "ghp_\|github_pat_" . \
-  --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist
+git grep -nIE 'gh[pousr]_[A-Za-z0-9]{20,}|github_(pat|token)_' -- . ':!docs/deployment.md'
 ```
 
-Both must come back empty.
+Both must come back empty. (The check reads tracked files only; `.env` is ignored and
+untracked, which is exactly why it never reaches the repository.)
 
 ## 10. Node version
 
