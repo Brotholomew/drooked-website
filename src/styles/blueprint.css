@@ -141,12 +141,13 @@ body {
 
 .top-ruler {
   position: fixed;
-  top: var(--frame-outer);
+  top: 0;
   right: var(--frame-outer);
   left: var(--frame-outer);
   z-index: var(--ruler-z);
-  height: var(--ruler);
+  height: calc(var(--frame-outer) + var(--ruler));
   overflow: hidden;
+  background-color: var(--blueprint-blue);
   pointer-events: none;
 }
 
