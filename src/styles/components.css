@@ -45,6 +45,16 @@
   flex-direction: column;
 }
 
+/* Homepage: the composition is centred in the sheet, so the horizontal
+   inset is mirrored and the last grid cell is left to SheetEnd. The inset
+   scales from the sheet gutter (phones) to the full content inset. */
+.layout-home .home-shell__main {
+  padding:
+    var(--content-y)
+    clamp(var(--sheet-gutter), 9vw, var(--content-x))
+    var(--grid-minor);
+}
+
 /* -------------------------------------------------------------------------
    SheetEnd — content-driven closing lines, never fixed to the viewport
    ---------------------------------------------------------------------- */

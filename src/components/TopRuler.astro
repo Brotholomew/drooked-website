@@ -40,7 +40,10 @@ const positionStyle = (units: number) => `left: calc(${toViewport(units)}vw - va
       <span
         class:list={[
           'top-ruler__label',
-          { 'top-ruler__label--hide-mobile': index % 2 === 0 },
+          {
+            'top-ruler__label--hide-mobile': index % 2 === 0,
+            'top-ruler__label--first': index === 0,
+          },
         ]}
         style={positionStyle(units)}
       >

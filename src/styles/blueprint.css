@@ -176,6 +176,12 @@ body {
   white-space: nowrap;
 }
 
+/* The 64 label sits under the top-left registration crosshair at every
+   viewport width; the 64 tick still marks the coordinate. */
+.top-ruler__label--first {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .top-ruler__label {
     bottom: 9px;

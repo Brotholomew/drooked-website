@@ -1,0 +1,32 @@
+---
+export interface Props {
+  /** Network id, also selects the masked icon in links.css. */
+  network: 'instagram' | 'tiktok' | 'youtube' | 'mail';
+  href: string;
+  /** Accessible name for the icon-only link. */
+  label: string;
+  target?: '_blank' | '_self';
+  rel?: string;
+  class?: string;
+}
+
+const {
+  network,
+  href,
+  label,
+  target,
+  rel,
+  class: className,
+} = Astro.props;
+---
+
+<a
+  class:list={['cmyk-icon-link', className]}
+  href={href}
+  aria-label={label}
+  data-network={network}
+  target={target}
+  rel={rel}
+>
+  <span class="cmyk-icon-link__glyph" aria-hidden="true"></span>
+</a>

@@ -1,0 +1,201 @@
+/* -------------------------------------------------------------------------
+   CMYK link system
+   Text links keep a real text node. `::before` duplicates it through
+   `content: attr(data-text)`, paints a 45 degree cyan/yellow/magenta
+   gradient inside the glyphs and reveals it from the left with clip-path.
+   A 1px underline grows with scaleX on hover/focus; the link itself gets a
+   small spring lift and layered shading.
+   ---------------------------------------------------------------------- */
+
+.cmyk-link {
+  --cmyk-band: repeating-linear-gradient(
+    45deg,
+    var(--cmyk-cyan) 0 0.18em,
+    var(--cmyk-yellow) 0.18em 0.36em,
+    var(--cmyk-magenta) 0.36em 0.54em
+  );
+
+  position: relative;
+  display: inline-block;
+  color: var(--ink-80);
+  text-decoration: none;
+  white-space: normal;
+  transform: translateY(0);
+  transition:
+    transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 160ms ease,
+    text-shadow 260ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cmyk-link::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: var(--cmyk-band);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 360ms cubic-bezier(0.22, 0.8, 0.3, 1);
+  pointer-events: none;
+  white-space: inherit;
+}
+
+.cmyk-link::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -0.16em;
+  left: 0;
+  z-index: 2;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms cubic-bezier(0.22, 0.8, 0.3, 1);
+  pointer-events: none;
+}
+
+.cmyk-link:hover,
+.cmyk-link:focus-visible {
+  color: var(--ink);
+  transform: translateY(-0.08em);
+  text-shadow:
+    0 1px 0 rgba(5, 41, 71, 0.55),
+    0 2px 0 rgba(5, 41, 71, 0.28),
+    0 0.3em 0.7em rgba(5, 41, 71, 0.45);
+}
+
+.cmyk-link:hover::before,
+.cmyk-link:focus-visible::before {
+  clip-path: inset(0);
+}
+
+.cmyk-link:hover::after,
+.cmyk-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* -------------------------------------------------------------------------
+   Icon links: the same gradient sweep, masked to a single-colour glyph.
+   The mask lives on the glyph, so both the base colour and the gradient
+   pseudo-element are cut to the icon outline.
+   ---------------------------------------------------------------------- */
+
+.cmyk-icon-link {
+  --icon-size: 1.5rem;
+  --icon-url: none;
+
+  position: relative;
+  display: inline-flex;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-80);
+  text-decoration: none;
+  transform: translateY(0);
+  filter: drop-shadow(0 0 0 rgba(5, 41, 71, 0));
+  transition:
+    transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 160ms ease,
+    filter 260ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cmyk-icon-link[data-network="instagram"] {
+  --icon-url: url("/icons/social/instagram.svg");
+}
+
+.cmyk-icon-link[data-network="tiktok"] {
+  --icon-url: url("/icons/social/tiktok.svg");
+}
+
+.cmyk-icon-link[data-network="youtube"] {
+  --icon-url: url("/icons/social/youtube.svg");
+}
+
+.cmyk-icon-link[data-network="mail"] {
+  --icon-url: url("/icons/social/mail.svg");
+}
+
+.cmyk-icon-link__glyph {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
+  -webkit-mask-image: var(--icon-url);
+  mask-image: var(--icon-url);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.cmyk-icon-link__glyph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--cmyk-cyan) 0 0.12rem,
+    var(--cmyk-yellow) 0.12rem 0.24rem,
+    var(--cmyk-magenta) 0.24rem 0.36rem
+  );
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 360ms cubic-bezier(0.22, 0.8, 0.3, 1);
+  pointer-events: none;
+}
+
+.cmyk-icon-link:hover,
+.cmyk-icon-link:focus-visible {
+  color: var(--ink);
+  transform: translateY(-0.08em);
+  filter: drop-shadow(0 2px 3px rgba(5, 41, 71, 0.55));
+}
+
+.cmyk-icon-link:hover .cmyk-icon-link__glyph::after,
+.cmyk-icon-link:focus-visible .cmyk-icon-link__glyph::after {
+  clip-path: inset(0);
+}
+
+/* -------------------------------------------------------------------------
+   Reduced motion: keep the colour, gradient and underline end states,
+   remove all movement and interpolation.
+   ---------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .cmyk-link,
+  .cmyk-link::before,
+  .cmyk-link::after,
+  .cmyk-icon-link,
+  .cmyk-icon-link__glyph::after {
+    transition: none;
+  }
+
+  .cmyk-link:hover,
+  .cmyk-link:focus-visible,
+  .cmyk-icon-link:hover,
+  .cmyk-icon-link:focus-visible {
+    transform: none;
+  }
+
+  .cmyk-link:hover::before,
+  .cmyk-link:focus-visible::before,
+  .cmyk-icon-link:hover .cmyk-icon-link__glyph::after,
+  .cmyk-icon-link:focus-visible .cmyk-icon-link__glyph::after {
+    clip-path: inset(0);
+  }
+
+  .cmyk-link:hover::after,
+  .cmyk-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
