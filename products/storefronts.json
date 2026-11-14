@@ -12,5 +12,12 @@
         "url": "https://eu.snapmaker.com",
         "icon": "/icons/storefronts/snapmaker-eu.svg",
         "description": "Snapmaker's official European store."
+    },
+    {
+        "id": "artcraft-official",
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com",
+        "icon": "/icons/storefronts/artcraft-official.svg",
+        "description": "Official ArtCraft site. The launcher and individual apps are free and open source."
     }
 ]

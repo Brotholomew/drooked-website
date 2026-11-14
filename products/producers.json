@@ -12,5 +12,19 @@
         "url": "https://snapmaker.com",
         "icon": "/icons/producers/snapmaker.svg",
         "description": "Shenzhen-based maker of desktop 3D printers, laser engravers and CNC machines. The U1 is its four-toolhead printer."
+    },
+    {
+        "id": "dji",
+        "name": "DJI",
+        "url": "https://www.dji.com",
+        "icon": "/icons/producers/dji.svg",
+        "description": "Shenzhen-based drone and camera technology company founded in 2006, known for aerial systems, gimbals, action cameras and wireless microphones."
+    },
+    {
+        "id": "artcraft",
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com",
+        "icon": "/icons/producers/artcraft.svg",
+        "description": "Maker of the ArtCraft Suite: seventeen open-source creative apps built in Rust, covering image, vector, video, audio, motion, 3D, CAD and more."
     }
 ]

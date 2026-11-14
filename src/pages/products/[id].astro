@@ -92,61 +92,6 @@ const jsonLd = [
       </div>
     </section>
 
-    <section class="product-detail__section product-entity" aria-labelledby="product-producer">
-      <p class="product-detail__label" id="product-producer">PRODUCER</p>
-      <div class="product-entity__row">
-        <span
-          class="product-entity__icon product-entity__icon--badge"
-          style={`--icon-url: url("${product.producer.icon}")`}
-          aria-hidden="true"
-        />
-        <div class="product-entity__body">
-          <h2 class="product-entity__name">{product.producer.name}</h2>
-          <p class="product-entity__url">
-            <CmykLink
-              href={product.producer.url}
-              text={displayUrl(product.producer.url)}
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-          </p>
-          <p class="product-entity__text">{product.producer.description}</p>
-        </div>
-      </div>
-    </section>
-
-    {
-      storefronts.map((storefront, index) => (
-        <section
-          class="product-detail__section product-entity"
-          aria-labelledby={`product-storefront-${storefront.id}`}
-        >
-          <p class="product-detail__label" id={`product-storefront-${storefront.id}`}>
-            STOREFRONT {String(index + 1).padStart(2, '0')}
-          </p>
-          <div class="product-entity__row">
-            <span
-              class="product-entity__icon product-entity__icon--badge"
-              style={`--icon-url: url("${storefront.icon}")`}
-              aria-hidden="true"
-            />
-            <div class="product-entity__body">
-              <h2 class="product-entity__name">{storefront.name}</h2>
-              <p class="product-entity__url">
-                <CmykLink
-                  href={storefront.url}
-                  text={displayUrl(storefront.url)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
-              </p>
-              <p class="product-entity__text">{storefront.description}</p>
-            </div>
-          </div>
-        </section>
-      ))
-    }
-
     <section class="product-detail__section product-links-section" aria-labelledby="product-links">
       <div class="product-links-head">
         <p class="product-detail__label" id="product-links">LINKS</p>
@@ -210,6 +155,61 @@ const jsonLd = [
         }
       </ul>
     </section>
+
+    <section class="product-detail__section product-entity" aria-labelledby="product-producer">
+      <p class="product-detail__label" id="product-producer">PRODUCER</p>
+      <div class="product-entity__row">
+        <span
+          class="product-entity__icon product-entity__icon--badge"
+          style={`--icon-url: url("${product.producer.icon}")`}
+          aria-hidden="true"
+        />
+        <div class="product-entity__body">
+          <h2 class="product-entity__name">{product.producer.name}</h2>
+          <p class="product-entity__url">
+            <CmykLink
+              href={product.producer.url}
+              text={displayUrl(product.producer.url)}
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+          </p>
+          <p class="product-entity__text">{product.producer.description}</p>
+        </div>
+      </div>
+    </section>
+
+    {
+      storefronts.map((storefront, index) => (
+        <section
+          class="product-detail__section product-entity"
+          aria-labelledby={`product-storefront-${storefront.id}`}
+        >
+          <p class="product-detail__label" id={`product-storefront-${storefront.id}`}>
+            STOREFRONT {String(index + 1).padStart(2, '0')}
+          </p>
+          <div class="product-entity__row">
+            <span
+              class="product-entity__icon product-entity__icon--badge"
+              style={`--icon-url: url("${storefront.icon}")`}
+              aria-hidden="true"
+            />
+            <div class="product-entity__body">
+              <h2 class="product-entity__name">{storefront.name}</h2>
+              <p class="product-entity__url">
+                <CmykLink
+                  href={storefront.url}
+                  text={displayUrl(storefront.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
+              </p>
+              <p class="product-entity__text">{storefront.description}</p>
+            </div>
+          </div>
+        </section>
+      ))
+    }
 
     <p class="affiliate-disclosure">
       <strong>AFFILIATE DISCLOSURE</strong> — Affiliate links are marked with an

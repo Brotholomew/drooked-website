@@ -19,6 +19,8 @@
   /* Type */
   --font-body: "Roboto Slab", Georgia, serif;
   --font-mono: "DejaVu Mono", ui-monospace, monospace;
+  /* Uniform body/page-title size lift; 5pt = 6.6667px. */
+  --type-boost: 5pt;
 
   /* Sheet grid and chrome */
   --grid-minor: 16px;
@@ -27,8 +29,8 @@
   --frame-outer: 12px;
   --frame-inner: 24px;
 
-  --grid-line-minor: rgba(243, 243, 248, 0.1);
-  --grid-line-major: rgba(243, 243, 248, 0.22);
+  --grid-line-minor: rgba(243, 243, 248, 0.08);
+  --grid-line-major: rgba(243, 243, 248, 0.18);
   --grid-hairline: 1px;
   --grid-hairline-major: 1.5px;
 
