@@ -19,5 +19,12 @@
         "url": "https://getartcraft.com",
         "icon": "/icons/storefronts/artcraft-official.svg",
         "description": "Official ArtCraft site. The launcher and individual apps are free and open source."
+    },
+    {
+        "id": "apple-support",
+        "name": "Apple Support",
+        "url": "https://support.apple.com/de-de/111829",
+        "icon": "/icons/storefronts/apple-support.svg",
+        "description": "Apple's official technical specifications and support page for the iPhone 15 Pro."
     }
 ]
