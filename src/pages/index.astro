@@ -3,6 +3,12 @@ import HomeLayout from '../layouts/HomeLayout.astro';
 import HeaderComposition from '../components/HeaderComposition.astro';
 import CmykIconLink from '../components/CmykIconLink.astro';
 import CmykLink from '../components/CmykLink.astro';
+import {
+  SITE_DESCRIPTION,
+  SITE_HOME_TITLE,
+  organizationJsonLd,
+  websiteJsonLd,
+} from '../lib/seo';
 
 const socialLinks = [
   {
@@ -33,11 +39,15 @@ const navLinks = [
   { href: '/products/', text: 'products' },
   { href: '/contact/', text: 'contact me' },
 ];
+
+const jsonLd = [websiteJsonLd(), organizationJsonLd()];
 ---
 
 <HomeLayout
-  title="droocked.origins"
-  description="droocked.origins — 3D printing products, projects, and knowledge."
+  title={SITE_HOME_TITLE}
+  description={SITE_DESCRIPTION}
+  canonicalPath="/"
+  jsonLd={jsonLd}
 >
   <h1 class="visually-hidden">droocked.origins</h1>
 

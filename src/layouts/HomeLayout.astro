@@ -1,16 +1,25 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import SheetEnd from '../components/SheetEnd.astro';
+import type { JsonLd } from '../lib/seo';
 
 interface Props {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  jsonLd?: JsonLd | JsonLd[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, canonicalPath, jsonLd } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} bodyClass="layout-home">
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  jsonLd={jsonLd}
+  bodyClass="layout-home"
+>
   <div class="home-shell">
     <main id="main" class="home-shell__main">
       <slot />

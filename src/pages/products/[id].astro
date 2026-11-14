@@ -5,9 +5,15 @@ import CmykLink from '../../components/CmykLink.astro';
 import {
   displayUrl,
   loadProducts,
+  productRoute,
   type Product,
   type Storefront,
 } from '../../lib/products';
+import {
+  breadcrumbJsonLd,
+  clampText,
+  itemPageJsonLd,
+} from '../../lib/seo';
 
 export function getStaticPaths() {
   const { products } = loadProducts();
@@ -37,11 +43,38 @@ for (const link of product.links) {
 }
 
 const pendingCount = product.links.filter((link) => link.pending).length;
+
+const canonicalPath = productRoute(product);
+const description = clampText(
+  `${product.subtitle} — ${product.description}`,
+);
+
+const jsonLd = [
+  itemPageJsonLd({
+    name: product.name,
+    description,
+    path: canonicalPath,
+    product: {
+      name: product.name,
+      description: product.description,
+      category: product.subtitle,
+      image: product.icon,
+      brand: product.producer.name,
+    },
+  }),
+  breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Products', path: '/products/' },
+    { name: product.name, path: canonicalPath },
+  ]),
+];
 ---
 
 <PageLayout
-  title={product.name}
-  description={`${product.name} — ${product.subtitle}. ${product.description}`}
+  title={`${product.name} — DROOCKED.ORIGINS`}
+  description={description}
+  canonicalPath={canonicalPath}
+  jsonLd={jsonLd}
 >
   <SubpageHeader title={product.name} index={indexLabel} />
 

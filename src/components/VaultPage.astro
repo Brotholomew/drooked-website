@@ -11,6 +11,12 @@ import {
   type VaultFolder,
   type VaultNote,
 } from '../lib/vault';
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  clampText,
+  plainTextExcerpt,
+} from '../lib/seo';
 import type { WikilinkReport } from '../lib/remark-wikilinks';
 
 interface Props {
@@ -32,45 +38,64 @@ const {
 } = Astro.props;
 
 const pageTitle =
-  kind === 'root' ? 'KNOWLEDGEBASE' : entry.displayTitle;
+  kind === 'root'
+    ? 'KNOWLEDGEBASE — DROOCKED.ORIGINS'
+    : `KNOWLEDGEBASE — ${entry.displayTitle} — DROOCKED.ORIGINS`;
+
+function noteExcerpt(note: VaultNote): string {
+  // Skip headings so the meta description starts with prose, not the title.
+  const body = note.body.replace(/^[ \t]{0,3}#{1,6}[ \t]+.*$/gm, ' ');
+  return plainTextExcerpt(body, 158);
+}
+
+function folderExcerpt(folder: VaultFolder): string {
+  const indexNote = folder.children.find(
+    (child): child is VaultNote =>
+      child.type === 'note' &&
+      child.order === 0 &&
+      /index/i.test(child.displayTitle),
+  );
+
+  if (indexNote) {
+    const indexExcerpt = noteExcerpt(indexNote);
+    if (indexExcerpt) return indexExcerpt;
+  }
+
+  const children = folder.children;
+  if (children.length === 0) {
+    return `Knowledgebase folder ${folder.displayTitle} — no published notes yet.`;
+  }
+
+  const names = children.slice(0, 3).map((child) => child.displayTitle);
+  const more = children.length - names.length;
+  const list = names.join(', ');
+
+  return clampText(
+    `Knowledgebase folder ${folder.displayTitle}: ${list}${more > 0 ? `, and ${more} more` : ''}.`,
+    158,
+  );
+}
 
 const description =
   kind === 'note'
-    ? noteExcerpt(entry as VaultNote)
+    ? noteExcerpt(entry as VaultNote) ||
+      `${entry.displayTitle} — DROOCKED.ORIGINS knowledgebase note.`
     : kind === 'folder'
-      ? `Knowledgebase folder: ${(entry as VaultFolder).displayTitle}. Notes, material references and machine documentation from droocked.origins.`
-      : 'The droocked.origins knowledgebase — filament guides, nozzle and machine notes, and material references.';
-
-function noteExcerpt(note: VaultNote): string {
-  const paragraph = note.body
-    .split(/\r?\n\s*\r?\n/)
-    .map((block) => block.trim())
-    .find(
-      (block) =>
-        block.length > 0 &&
-        !block.startsWith('#') &&
-        !block.startsWith('|') &&
-        !block.startsWith('>') &&
-        !block.startsWith('-') &&
-        !block.startsWith('$$'),
-    );
-
-  const plain = (paragraph ?? '')
-    .replace(/!?\[\[([^[\]\n]+?)\]\]/g, (_raw, inner: string) => {
-      const pipe = inner.indexOf('|');
-      const target = pipe === -1 ? inner : inner.slice(0, pipe);
-      const alias = pipe === -1 ? '' : inner.slice(pipe + 1);
-      return alias || target.replace(/^\d+\s*[-–]\s*/, '');
-    })
-    .replace(/[*_`>]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-
-  if (!plain) return `${note.displayTitle} — droocked.origins knowledgebase note.`;
-  return plain.length > 155 ? `${plain.slice(0, 152).trimEnd()}…` : plain;
-}
+      ? folderExcerpt(entry as VaultFolder)
+      : 'The DROOCKED.ORIGINS knowledgebase — filament guides, nozzle and machine notes, and material references for 3D printing.';
 
 const breadcrumb = breadcrumbFor(vaultData, entry);
+
+const breadcrumbItems = [
+  { name: 'Home', path: '/' },
+  ...breadcrumb.map((crumb) => ({
+    name:
+      crumb.route === '/knowledgebase/'
+        ? 'Knowledgebase'
+        : crumb.displayTitle,
+    path: crumb.route,
+  })),
+];
 
 const children =
   kind === 'note' ? [] : ((entry as VaultFolder).children ?? []);
@@ -99,6 +124,21 @@ const toc = note
   ? note.headings.filter((heading) => heading.level <= 3).slice(0, 24)
   : [];
 
+const jsonLd = [
+  ...(note
+    ? [
+        articleJsonLd({
+          headline: note.displayTitle,
+          description,
+          path: note.route,
+        }),
+      ]
+    : []),
+  breadcrumbJsonLd(breadcrumbItems),
+];
+
+const headerTitle = kind === 'root' ? 'KNOWLEDGEBASE' : entry.displayTitle;
+
 if (report && report.missingLinks.length > 0) {
   for (const missing of report.missingLinks) {
     console.warn(
@@ -110,9 +150,14 @@ if (report && report.missingLinks.length > 0) {
 }
 ---
 
-<PageLayout title={pageTitle} description={description}>
+<PageLayout
+  title={pageTitle}
+  description={description}
+  ogType={note ? 'article' : 'website'}
+  jsonLd={jsonLd}
+>
   <SubpageHeader
-    title={pageTitle}
+    title={headerTitle}
     index={kind === 'note' ? entry.orderLabel : null}
   />
 

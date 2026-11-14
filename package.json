@@ -10,6 +10,7 @@
     "check": "astro check",
     "validate": "node --import tsx scripts/validate-content.mjs",
     "brand:build": "node scripts/build-brand-assets.mjs",
+    "og:build": "node scripts/generate-og.mjs",
     "utm": "node scripts/utm.mjs"
   },
   "dependencies": {
@@ -38,6 +39,7 @@
     "@types/hast": "^3.0.5",
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.20.5",
+    "sharp": "^0.35.5",
     "tsx": "^4.23.15",
     "typescript": "^5.9.3"
   }
