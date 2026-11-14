@@ -58,7 +58,12 @@ function folderExcerpt(folder: VaultFolder): string {
 
   if (indexNote) {
     const indexExcerpt = noteExcerpt(indexNote);
-    if (indexExcerpt) return indexExcerpt;
+    if (indexExcerpt) {
+      return clampText(
+        `Knowledgebase folder ${folder.displayTitle} — ${indexExcerpt}`,
+        158,
+      );
+    }
   }
 
   const children = folder.children;

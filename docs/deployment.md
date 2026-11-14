@@ -214,7 +214,41 @@ gh api repos/Brotholomew/drooked-website/deployments/<id>/statuses \
   --jq '.[0] | {state, environment_url}'
 ```
 
-## 9. Secrets
+## 9. Known external blocker (GitHub Actions billing lock)
+
+On 2026-11-14 GitHub refused every workflow before it reached a runner. The jobs
+were shown as `failure` with a skipped `deploy` job and no step logs, and the
+account-level message was:
+
+> The job was not started because your account is locked due to a billing issue.
+
+This was a GitHub Actions billing lock, not a repository, Pages, DNS, or workflow
+configuration problem. Nothing in the deployment architecture needed to change.
+A manual `workflow_dispatch` of `Deploy to GitHub Pages` on `main` at
+**15:26 UTC** completed both the `build` and `deploy` jobs successfully, and
+<https://origins.droocked.com> returned HTTP 200 afterwards. The lock is
+therefore cleared for this repository as of that run.
+
+If the message ever returns, the exact external action is to clear the billing
+issue in **GitHub → Settings → Billing and plans → Actions**, then run the
+one-command deploy:
+
+```bash
+gh workflow run "Deploy to GitHub Pages" --ref main
+```
+
+That reuses the current `main` commit and the existing Pages configuration; no
+new commit, DNS change, or settings change is required.
+
+Already configured and verified — do not recreate them:
+
+- **Pages source:** GitHub Actions (`build_type=workflow`)
+- **Custom domain:** `origins.droocked.com`
+- **Certificate:** `approved`; **Enforce HTTPS:** on
+- **Cloudflare DNS:** `CNAME origins → brotholomew.github.io`, DNS only
+- **Repository variable:** `PUBLIC_GA_ID=G-SZ67XVNMM4`
+
+## 10. Secrets
 
 `.env` (which holds `GH_TOKEN`) and `origin-prompt.md` are gitignored and never committed.
 The GitHub token is used only for local `gh` calls. The deploy workflow needs no secrets:
@@ -231,7 +265,7 @@ git grep -nIE 'gh[pousr]_[A-Za-z0-9]{20,}|github_(pat|token)_' -- . ':!docs/depl
 Both must come back empty. (The check reads tracked files only; `.env` is ignored and
 untracked, which is exactly why it never reaches the repository.)
 
-## 10. Node version
+## 11. Node version
 
 Astro 7 requires **Node.js 22+**. Both workflows pin `node-version: 22` with npm caching.
 If the local shell runs a newer Node, that is fine for local work, but CI stays on 22 to

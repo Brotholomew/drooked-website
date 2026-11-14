@@ -21,6 +21,7 @@ import remarkWikilinks, {
 } from './remark-wikilinks';
 import remarkCallouts from './remark-callouts';
 import rehypeLinkAttrs from './rehype-link-attrs';
+import rehypeVaultA11y from './rehype-vault-a11y';
 import { vault, type Vault, type VaultNote } from './vault';
 
 export interface RenderResult {
@@ -68,12 +69,12 @@ export async function renderMarkdown(
       strict: false,
       trust: false,
     })
+    .use(rehypeVaultA11y)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, {
       behavior: 'wrap',
       properties: {
         className: ['heading-anchor'],
-        'aria-label': 'Link to this section',
       },
     })
     .use(rehypeLinkAttrs)
