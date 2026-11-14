@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import BlueprintChrome from '../components/BlueprintChrome.astro';
+import LeftRuler from '../components/LeftRuler.astro';
+import TopRuler from '../components/TopRuler.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  bodyClass?: string;
+}
+
+const {
+  title = 'droocked.origins',
+  description = 'droocked.origins — 3D printing products, projects, and knowledge.',
+  bodyClass = '',
+} = Astro.props;
+
+const pageTitle =
+  title === 'droocked.origins' ? title : `${title} — droocked.origins`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#1e4469" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <BlueprintChrome />
+    <TopRuler />
+    <LeftRuler />
+    <slot />
+    <script>
+      import '../scripts/ruler.ts';
+    </script>
+  </body>
+</html>

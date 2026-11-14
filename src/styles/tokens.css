@@ -1,0 +1,54 @@
+:root {
+  /* Blueprint palette */
+  --blueprint-blue: #1e4469;
+  --blueprint-deep: #052947;
+  --line: #f3f3f8;
+  --ink: #ffffff;
+  --ink-80: rgba(255, 255, 255, 0.8);
+  --ink-60: rgba(255, 255, 255, 0.6);
+  --sketch: #ababab;
+  --logo: #2b2c2c;
+
+  /* CMYK accents */
+  --cmyk-cyan: #00c4c4;
+  --cmyk-yellow: #c7c738;
+  --cmyk-magenta: #c56abd;
+
+  /* Type */
+  --font-body: "Roboto Slab", Georgia, serif;
+  --font-mono: "DejaVu Mono", ui-monospace, monospace;
+
+  /* Sheet grid and chrome */
+  --grid-minor: 16px;
+  --grid-major: 80px;
+  --ruler: 40px;
+  --frame-outer: 12px;
+  --frame-inner: 24px;
+
+  --grid-line-minor: rgba(243, 243, 248, 0.1);
+  --grid-line-major: rgba(243, 243, 248, 0.22);
+  --grid-hairline: 1px;
+  --grid-hairline-major: 1.5px;
+
+  /* Derived layout: sheet gutter is the frame line plus the ruler band. */
+  --sheet-gutter: calc(var(--frame-outer) + var(--ruler));
+  --content-x: calc(var(--frame-outer) + var(--ruler) + var(--grid-major));
+  --content-y: var(--content-x);
+  --content-right: calc(var(--frame-outer) + var(--grid-major));
+  --content-bottom: calc(var(--frame-outer) + var(--grid-major));
+
+  /* Stacking */
+  --ruler-z: 30;
+  --chrome-z: 40;
+  --skip-link-z: 100;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --grid-minor: 12px;
+    --grid-major: 60px;
+    --ruler: 28px;
+    --frame-outer: 8px;
+    --frame-inner: 16px;
+  }
+}

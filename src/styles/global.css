@@ -1,27 +1,10 @@
-@import '@fontsource/roboto-slab/400.css';
-@import '@fontsource/roboto-slab/700.css';
-@import '@fontsource/dejavu-mono/400.css';
-@import '@fontsource/dejavu-mono/700.css';
+@import '@fontsource/roboto-slab/latin-400.css';
+@import '@fontsource/roboto-slab/latin-700.css';
+@import '@fontsource/dejavu-mono/latin-400.css';
+@import '@fontsource/dejavu-mono/latin-700.css';
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  min-height: 100%;
-}
-
-body {
-  background: #1e4469;
-  color: #f3f3f8;
-  font-family: 'Roboto Slab', Georgia, serif;
-  line-height: 1.65;
-}
-
-a {
-  color: inherit;
-}
+@import './tokens.css';
+@import './base.css';
+@import './blueprint.css';
+@import './typography.css';
+@import './components.css';
