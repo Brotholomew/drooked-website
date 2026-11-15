@@ -21,6 +21,10 @@
   --font-mono: "DejaVu Mono", ui-monospace, monospace;
   /* Uniform body/page-title size lift; 5pt = 6.6667px. */
   --type-boost: 5pt;
+  /* Body/content lift; set to 0pt to compare unboosted body text. */
+  --body-boost: 0pt;
+  /* Metadata (breadcrumb, tags); independent from body and headings. */
+  --meta-boost: 0pt;
 
   /* Sheet grid and chrome */
   --grid-minor: 16px;
@@ -36,10 +40,11 @@
 
   /* Derived layout: sheet gutter is the frame line plus the ruler band. */
   --sheet-gutter: calc(var(--frame-outer) + var(--ruler));
-  --content-x: calc(var(--frame-outer) + var(--ruler) + var(--grid-major));
+  --content-gap: var(--grid-major);
+  --content-x: calc(var(--frame-outer) + var(--ruler) + var(--content-gap));
   --content-y: var(--content-x);
-  --content-right: calc(var(--frame-outer) + var(--grid-major));
-  --content-bottom: calc(var(--frame-outer) + var(--grid-major));
+  --content-right: calc(var(--frame-outer) + var(--content-gap));
+  --content-bottom: var(--content-right);
 
   /* Stacking */
   --ruler-z: 30;
@@ -55,5 +60,6 @@
     --ruler: 28px;
     --frame-outer: 8px;
     --frame-inner: 16px;
+    --content-gap: 12px;
   }
 }

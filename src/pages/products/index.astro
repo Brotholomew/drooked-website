@@ -12,35 +12,35 @@ const { products } = loadProducts();
 >
   <SubpageHeader title="PRODUCTS" />
 
-  <section class="page-section products-intro" aria-labelledby="products-intro-heading">
-    <h2 class="visually-hidden" id="products-intro-heading">Product catalogue</h2>
-    <p>
-      Hardware and tools that show up in the videos and notes. Every sheet lists
-      the producer, the storefront, and the direct link as soon as it exists.
-    </p>
-    <p class="products-disclosure">
-      <strong>AFFILIATE DISCLOSURE</strong> — Some outgoing links are affiliate
-      links, marked with an <span class="products-disclosure__badge">AFFILIATE</span>
-      badge. If you buy through one, droocked.origins may earn a commission at no
-      extra cost to you. Links without a URL yet are marked
-      <span class="products-disclosure__pending">LINK PENDING</span>.
-    </p>
-  </section>
+  <section class="page-section products-browser reading-column" aria-labelledby="products-heading">
+    <h2 class="visually-hidden" id="products-heading">Product catalogue</h2>
 
-  <section class="page-section" aria-labelledby="products-grid-heading">
-    <div class="products-grid-head">
-      <h2 class="products-grid-head__title" id="products-grid-heading">
-        CATALOGUE
-      </h2>
-      <span class="products-grid-head__count">
-        {products.length} {products.length === 1 ? 'ENTRY' : 'ENTRIES'}
-      </span>
+    <div class="products-search" role="search">
+      <div class="products-search__meta">
+        <label class="products-search__label" for="product-search">SEARCH</label>
+        <p class="products-search__status" data-product-count aria-live="polite">
+          {products.length} products
+        </p>
+      </div>
+      <input
+        class="products-search__input"
+        id="product-search"
+        type="search"
+        placeholder="Name, type or producer"
+        autocomplete="off"
+        data-product-search
+        aria-controls="product-list"
+      />
     </div>
 
-    <ul class="product-grid" role="list">
+    <ul class="product-grid" id="product-list" role="list">
       {
         products.map((product, index) => (
-          <li class="product-grid__item">
+          <li
+            class="product-grid__item"
+            data-product-card
+            data-search={`${product.name} ${product.subtitle} ${product.description} ${product.producer.name}`.toLowerCase()}
+          >
             <a
               class="product-card"
               href={productRoute(product)}
@@ -88,5 +88,44 @@ const { products } = loadProducts();
         ))
       }
     </ul>
+
+    <p class="products-empty" data-product-empty hidden>
+      No products match that search.
+    </p>
   </section>
 </PageLayout>
+
+<script>
+  const input = document.querySelector<HTMLInputElement>('[data-product-search]');
+  const cards = Array.from(
+    document.querySelectorAll<HTMLElement>('[data-product-card]'),
+  );
+  const count = document.querySelector<HTMLElement>('[data-product-count]');
+  const empty = document.querySelector<HTMLElement>('[data-product-empty]');
+
+  if (input && count && empty) {
+    const total = cards.length;
+
+    const update = () => {
+      const terms: string[] = input.value
+        .toLowerCase()
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+      let visible = 0;
+
+      for (const card of cards) {
+        const haystack = card.getAttribute('data-search') || '';
+        const matches = terms.every((term: string) => haystack.includes(term));
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      }
+
+      count.textContent = `${visible} of ${total} products`;
+      empty.hidden = visible !== 0;
+    };
+
+    input.addEventListener('input', update);
+    update();
+  }
+</script>

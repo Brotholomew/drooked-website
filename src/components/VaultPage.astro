@@ -166,6 +166,8 @@ if (report && report.missingLinks.length > 0) {
     index={kind === 'note' ? entry.orderLabel : null}
   />
 
+  <div class="reading-column">
+
   {
     kind !== 'root' && (
       <nav class="vault-breadcrumb" aria-label="Breadcrumb">
@@ -298,4 +300,5 @@ if (report && report.missingLinks.length > 0) {
       </section>
     )
   }
+  </div>
 </PageLayout>

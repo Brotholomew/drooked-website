@@ -8,7 +8,7 @@ tags:
   - snapmaker-u1
 ---
 
-[TRELLIS.2-4B on Hugging Face](https://huggingface.co/microsoft/TRELLIS.2-4B)
+To access TRELLIS 2.0 on Hugging Face, click [here](https://huggingface.co/microsoft/TRELLIS.2-4B).
 
 Microsoft's 4B image-to-3D model. It generates textured meshes with PBR materials through a sparse O-Voxel representation. In the Archdevil experiments it produced the most complete overall shape and the best back-side detail, but the surface is faceted and not print-ready without remeshing.
 

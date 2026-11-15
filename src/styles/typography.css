@@ -1,6 +1,6 @@
 body {
   font-family: var(--font-body);
-  font-size: calc(clamp(1.0625rem, 0.975rem + 0.35vw, 1.25rem) + var(--type-boost));
+  font-size: calc(clamp(1.0625rem, 0.975rem + 0.35vw, 1.25rem) + var(--body-boost));
   font-weight: 400;
   line-height: 1.65;
   color: var(--ink-80);
@@ -55,7 +55,7 @@ b {
 }
 
 small {
-  font-size: calc(0.8125rem + var(--type-boost));
+  font-size: calc(0.8125rem + var(--body-boost));
 }
 
 code,

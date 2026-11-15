@@ -42,8 +42,6 @@ for (const link of product.links) {
   storefronts.push(link.storefront);
 }
 
-const pendingCount = product.links.filter((link) => link.pending).length;
-
 const canonicalPath = productRoute(product);
 const description = clampText(
   `${product.subtitle} — ${product.description}`,
@@ -78,7 +76,7 @@ const jsonLd = [
 >
   <SubpageHeader title={product.name} index={indexLabel} />
 
-  <article class="product-detail">
+  <article class="product-detail reading-column">
     <section class="product-detail__section product-hero" aria-labelledby="product-overview">
       <span
         class="product-hero__icon"
@@ -95,11 +93,6 @@ const jsonLd = [
     <section class="product-detail__section product-links-section" aria-labelledby="product-links">
       <div class="product-links-head">
         <p class="product-detail__label" id="product-links">LINKS</p>
-        <span class="product-links-head__state">
-          {pendingCount === product.links.length
-            ? 'ALL LINKS PENDING'
-            : `${product.links.length - pendingCount} LIVE / ${pendingCount} PENDING`}
-        </span>
       </div>
 
       <ul class="product-links" role="list">
@@ -208,13 +201,7 @@ const jsonLd = [
       <strong>AFFILIATE DISCLOSURE</strong> — Affiliate links are marked with an
       <span class="affiliate-disclosure__badge">AFFILIATE</span> badge and open
       in a new tab. If you buy through one, droocked.origins may earn a
-      commission at no extra cost to you. Empty links are shown as
-      <span class="affiliate-disclosure__pending">LINK PENDING</span> and become
-      active when the URL is supplied.
-    </p>
-
-    <p class="product-detail__back">
-      <CmykLink href="/products/" text="back to products" />
+      commission at no extra cost to you.
     </p>
   </article>
 </PageLayout>
