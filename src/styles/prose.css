@@ -8,7 +8,7 @@
 .vault-breadcrumb {
   margin-top: 1.25rem;
   font-family: var(--font-mono);
-  font-size: calc(0.6875rem + var(--type-boost));
+  font-size: calc(0.75rem + var(--meta-boost));
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-60);
@@ -53,7 +53,7 @@
   padding: 0;
   list-style: none;
   font-family: var(--font-mono);
-  font-size: calc(0.6875rem + var(--type-boost));
+  font-size: calc(0.75rem + var(--meta-boost));
   letter-spacing: 0.04em;
   color: var(--ink-60);
 }
@@ -349,10 +349,6 @@
   text-decoration-color: var(--ink);
 }
 
-.prose a.cmyk-link {
-  text-decoration: none;
-}
-
 .vault-link--missing {
   padding: 0 0.1em;
   border-bottom: 1px dashed var(--cmyk-magenta);
@@ -376,7 +372,7 @@
   width: 100%;
   min-width: 44rem;
   border-collapse: collapse;
-  font-size: calc(0.8125rem + var(--type-boost));
+  font-size: calc(0.8125rem + var(--body-boost));
   line-height: 1.5;
 }
 
@@ -565,20 +561,20 @@
   align-items: baseline;
   padding: 0.3rem 0;
   font-family: var(--font-mono);
-  font-size: calc(0.8125rem + var(--type-boost));
+  font-size: calc(0.8125rem + var(--body-boost));
   letter-spacing: 0.03em;
 }
 
 .vault-backlinks__index {
   flex: 0 0 2.25rem;
-  font-size: calc(0.625rem + var(--type-boost));
+  font-size: calc(0.625rem + var(--body-boost));
   color: var(--cmyk-cyan);
 }
 
 @media (max-width: 640px) {
   .vault-breadcrumb {
     margin-top: 1rem;
-    font-size: calc(0.625rem + var(--type-boost));
+    font-size: calc(0.6875rem + var(--meta-boost));
   }
 
   .vault-list__item {
@@ -601,6 +597,20 @@
 
   .prose table {
     min-width: 36rem;
+  }
+
+  .prose h2 {
+    font-size: 1.25rem;
+  }
+
+  .prose h3 {
+    font-size: 1.125rem;
+  }
+
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    font-size: 1rem;
   }
 
   .vault-toc {

@@ -7,29 +7,45 @@ interface Props {
 }
 
 const { title, index } = Astro.props;
+
+const path = Astro.url.pathname.replace(/\/+$/, '');
+const segments = path.split('/').filter(Boolean);
+const isRootChild = segments.length <= 1;
+const backHref = isRootChild
+  ? '/'
+  : `/${segments.slice(0, -1).join('/')}/`;
 ---
 
 <header class="subpage-header">
   <div class="subpage-header__nav">
     <a class="subpage-header__back" href="/" aria-label="Back to home">
       <svg
-        class="subpage-header__arrow"
+        class="subpage-header__icon"
         viewBox="0 0 24 24"
         aria-hidden="true"
         focusable="false"
       >
-        <path d="M20 12H5" />
-        <path d="M11 18l-6-6 6-6" />
+        <path d="M3 11.5 12 4l9 7.5" />
+        <path d="M5.5 10.5V20h13v-9.5" />
+        <path d="M9.5 20v-5h5v5" />
       </svg>
+      <span class="subpage-header__back-label">HOME</span>
     </a>
-    <img
-      class="subpage-header__wordmark"
-      src="/brand/wordmark.svg"
-      alt="droocked"
-      width="106"
-      height="18"
-      draggable="false"
-    />
+
+    {!isRootChild && (
+      <a class="subpage-header__back" href={backHref} aria-label="Back one level">
+        <svg
+          class="subpage-header__icon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M20 12H5" />
+          <path d="M11 18l-6-6 6-6" />
+        </svg>
+        <span class="subpage-header__back-label">BACK</span>
+      </a>
+    )}
   </div>
   <h1 class="subpage-header__title">
     {index && <span class="subpage-header__index">{index}</span>}{' '}

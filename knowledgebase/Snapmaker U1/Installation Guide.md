@@ -8,7 +8,7 @@ tags:
   - 3d-printing
 ---
 
-[Snapmaker U1 Quick Start Guide V1.0.0 (PDF)](https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+U1+Quick+Start+Guide+V1.0.0.pdf)
+To access the Snapmaker U1 Quick Start Guide, click [here](https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+U1+Quick+Start+Guide+V1.0.0.pdf).
 
 The official assembly and first-print guide. The useful part before you start is the accessory box: Snapmaker ships a surprising number of spares and service tools, and several are easy to miss in the packaging.
 

@@ -8,7 +8,7 @@ tags:
   - snapmaker-u1
 ---
 
-[Pixal3D on Hugging Face](https://huggingface.co/TencentARC/Pixal3D)
+To access Pixal3D on Hugging Face, click [here](https://huggingface.co/TencentARC/Pixal3D).
 
 Tencent ARC's image-to-3D model, built on the TRELLIS.2 backbone. It uses pixel-aligned back-projection, so the front view follows the input image more closely than TRELLIS.2. The trade-offs are weaker texture quality, back-side hallucination without multi-view input, and a mesh that still needs cleanup.
 
