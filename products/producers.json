@@ -33,5 +33,12 @@
         "url": "https://www.apple.com",
         "icon": "/icons/producers/apple.svg",
         "description": "Cupertino-based technology company behind the iPhone, Mac, iPad and a broad ecosystem of consumer hardware and software."
+    },
+    {
+        "id": "3djake",
+        "name": "3DJake",
+        "url": "https://www.3djake.com",
+        "icon": "/icons/producers/3djake.svg",
+        "description": "European 3D printing brand from niceshops in Austria, producing its own 3DJake filament line alongside printers, resin and accessories."
     }
 ]

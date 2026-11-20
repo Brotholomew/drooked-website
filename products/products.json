@@ -88,5 +88,35 @@
                 "affiliated": false
             }
         ]
+    },
+    {
+        "id": "3djake-abs-pastellpink",
+        "name": "3DJake ABS Pastellpink",
+        "subtitle": "ABS filament",
+        "icon": "/icons/products/filament-spool.svg",
+        "description": "Pastel-pink ABS filament from 3DJake's own range, made in the EU and wound on a 1 kg spool. Developed for mechanically loaded parts, with high thermal stability, UL 94 HB flame retardance, electrical insulation and strong layer adhesion. Print at 220–250 °C with a 100–110 °C bed.",
+        "producer-id": "3djake",
+        "links": [
+            {
+                "storefront-id": "3djake-at",
+                "link": "https://www.3djake.at/3djake/abs-pastellpink",
+                "affiliated": false
+            }
+        ]
+    },
+    {
+        "id": "3djake-abs-pastellgruen",
+        "name": "3DJake ABS Pastellgrün",
+        "subtitle": "ABS filament",
+        "icon": "/icons/products/filament-spool.svg",
+        "description": "Pastel-green ABS filament from 3DJake's own range, made in the EU and wound on a 1 kg spool. Developed for mechanically loaded parts, with high thermal stability, UL 94 HB flame retardance, low shrinking and strong layer adhesion. Print at 220–250 °C with a 100–110 °C bed.",
+        "producer-id": "3djake",
+        "links": [
+            {
+                "storefront-id": "3djake-at",
+                "link": "https://www.3djake.at/3djake/abs-pastellgruen",
+                "affiliated": false
+            }
+        ]
     }
 ]
