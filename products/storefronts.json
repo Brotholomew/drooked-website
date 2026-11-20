@@ -26,5 +26,12 @@
         "url": "https://support.apple.com/de-de/111829",
         "icon": "/icons/storefronts/apple-support.svg",
         "description": "Apple's official technical specifications and support page for the iPhone 15 Pro."
+    },
+    {
+        "id": "3djake-at",
+        "name": "3DJake Österreich",
+        "url": "https://www.3djake.at",
+        "icon": "/icons/storefronts/3djake-at.svg",
+        "description": "3DJake's Austrian online shop for 3D printers, filament, resin and accessories."
     }
 ]
