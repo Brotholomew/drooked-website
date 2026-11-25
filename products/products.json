@@ -39,7 +39,7 @@
         "links": [
             {
                 "storefront-id": "amazon-de",
-                "link": "",
+                "link": "https://link.amazon/B0iCwFCyC",
                 "affiliated": true
             }
         ]
@@ -54,7 +54,7 @@
         "links": [
             {
                 "storefront-id": "amazon-de",
-                "link": "",
+                "link": "https://link.amazon/B0hCMsZ2J",
                 "affiliated": true
             }
         ]
@@ -94,9 +94,14 @@
         "name": "iPhone 15 Pro",
         "subtitle": "smartphone",
         "icon": "/icons/products/iphone-15-pro.svg",
-        "description": "Apple's 2023 flagship iPhone with a titanium frame, A17 Pro chip, 48 MP main camera and USB-C. This entry links to Apple's official technical specifications rather than a shop.",
+        "description": "Apple's 2023 flagship iPhone with a titanium frame, A17 Pro chip, 48 MP main camera and USB-C.",
         "producer-id": "apple",
         "links": [
+            {
+                "storefront-id": "amazon-de",
+                "link": "https://link.amazon/B07a92SXW",
+                "affiliated": true
+            },
             {
                 "storefront-id": "apple-support",
                 "link": "https://support.apple.com/de-de/111829",
