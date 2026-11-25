@@ -28,6 +28,13 @@
         "description": "Maker of the ArtCraft Suite: seventeen open-source creative apps built in Rust, covering image, vector, video, audio, motion, 3D, CAD and more."
     },
     {
+        "id": "solidcraft",
+        "name": "SolidCraft",
+        "url": "https://solidcraft.io",
+        "icon": "/icons/producers/solidcraft.svg",
+        "description": "Open-source parametric CAD project by Tangency Labs, built in Rust. Desktop and browser apps share an editable feature history and an optional MCP server for AI agents."
+    },
+    {
         "id": "apple",
         "name": "Apple",
         "url": "https://www.apple.com",

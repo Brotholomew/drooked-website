@@ -21,6 +21,13 @@
         "description": "Official ArtCraft site. The launcher and individual apps are free and open source."
     },
     {
+        "id": "solidcraft-official",
+        "name": "SolidCraft",
+        "url": "https://solidcraft.io",
+        "icon": "/icons/storefronts/solidcraft-official.svg",
+        "description": "Official SolidCraft site. The desktop and browser apps are free and open source."
+    },
+    {
         "id": "apple-support",
         "name": "Apple Support",
         "url": "https://support.apple.com/de-de/111829",
