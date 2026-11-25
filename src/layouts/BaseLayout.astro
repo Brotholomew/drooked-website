@@ -56,6 +56,12 @@ const jsonLdBlocks: JsonLd[] = jsonLd
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#1e4469" />
+    {/* Impact's verifier expects a value attribute, which Astro's meta typings reject. */}
+    <Fragment
+      set:html={
+        '<meta name="impact-site-verification" value="8210cc85-5433-44f6-9f7e-7cc27067c879" />'
+      }
+    />
     <title>{title}</title>
     <meta name="description" content={description} />
     {robots && <meta name="robots" content={robots} />}
