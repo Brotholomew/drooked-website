@@ -75,6 +75,21 @@
         ]
     },
     {
+        "id": "solidcraft",
+        "name": "SolidCraft",
+        "subtitle": "parametric 3D CAD app",
+        "icon": "/icons/products/solidcraft.svg",
+        "description": "Open-source parametric CAD app built in Rust. Draw constrained sketches, extrude or revolve them into solids, and edit named parameters in a feature-history timeline; export STEP and mesh files, or drive the model through its optional MCP server. Desktop and browser builds.",
+        "producer-id": "solidcraft",
+        "links": [
+            {
+                "storefront-id": "solidcraft-official",
+                "link": "https://solidcraft.io",
+                "affiliated": false
+            }
+        ]
+    },
+    {
         "id": "iphone-15-pro",
         "name": "iPhone 15 Pro",
         "subtitle": "smartphone",
